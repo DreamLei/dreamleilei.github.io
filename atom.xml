@@ -18,6 +18,7 @@
   <entry>
     <title>Hello World</title>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <link href="http://dreamleilei.github.io/2016/06/20/hello-world/"/>
     <id>http://dreamleilei.github.io/2016/06/20/hello-world/</id>
 <<<<<<< HEAD
@@ -30,6 +31,11 @@
     <id>http://dreamleilei.github.io/2016/06/21/hello-world/</id>
     <published>2016-06-20T16:01:02.046Z</published>
 >>>>>>> 564dc6044edecd8e81aea1669f64b4b4247cdbaa
+=======
+    <link href="http://dreamleilei.github.io/2016/06/20/hello-world/"/>
+    <id>http://dreamleilei.github.io/2016/06/20/hello-world/</id>
+    <published>2016-06-20T15:15:29.661Z</published>
+>>>>>>> 39232a6686b40e3d936567c22f27852ed09df30d
     <updated>2016-06-19T09:01:59.000Z</updated>
     
     <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
@@ -53,6 +59,7 @@
   </entry>
   
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   <entry>
     <title>test</title>
@@ -75,4 +82,6 @@
   </entry>
   
 >>>>>>> 564dc6044edecd8e81aea1669f64b4b4247cdbaa
+=======
+>>>>>>> 39232a6686b40e3d936567c22f27852ed09df30d
 </feed>

@@ -4,18 +4,18 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>磊磊的博客</title>
+    <title>test1 | 磊磊的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="dreamleilei">
     
-    <meta name="description" content="for my dream">
+    <meta name="description" content="adfa">
     
     
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="idreajay" />
-    <meta name="twitter:title" content="磊磊的博客" />
+    <meta name="twitter:title" content="test1 | 磊磊的博客" />
       
     
     
@@ -66,56 +66,96 @@
 </div>
 
     </header>
-    
-
     <div id="container">
-      <div id="main">
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/06/21/hello-world/" title="Hello World" itemprop="url">
-  
-    <h1 itemprop="name">Hello World</h1>
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
     
-     
-           <p itemprop="description" >Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the </p>
-        
+      <a href="/2016/06/21/test1/" title="test1" itemprop="url">test1</a>
+  </h1>
+  <!-- 显示作者
+  <p class="article-author">By
     
-    <time datetime="2016-06-20T16:48:36.372Z" itemprop="datePublished">2016-06-21</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/06/21/test1/" title="test1" itemprop="url">
-  
-    <h1 itemprop="name">test1</h1>
-    
-     
-           <p itemprop="description" >adfa</p>
-        
-    
+      <a href="http://dreamleilei.github.io" title="dreamleilei">dreamleilei</a>
+    </p>
+  -->  
+  <p class="article-time">
     <time datetime="2016-06-20T16:47:26.000Z" itemprop="datePublished">2016-06-21</time>
-  </a>
-</section>
+    Updated:<time datetime="2016-06-20T16:47:52.000Z" itemprop="dateModified">2016-06-21</time>
+    
+  </p>
+</header>
 
-  <section class="post" itemscope itemprop="blogPost">
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>adfa</p>
   
-    <a href="/2016/06/20/test/" title="test" itemprop="url">
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-share" id="share">
+
   
-    <h1 itemprop="name">test</h1>
-    
-     
-           <p itemprop="description" >这是第一次用hexo写博客好紧张</p>
-        
-    
-    <time datetime="2016-06-20T15:59:15.000Z" itemprop="datePublished">2016-06-20</time>
-  </a>
-</section>
+<div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq"></a>
+    <a href="#" class="bds_renren" data-cmd="renren"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+
+
 
 
 </div>
 
+
+
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/06/21/hello-world/" title="Hello World">
+  <strong>Prev:</strong><br/>
+  <span>
+  Hello World</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/06/20/test/"  title="test">
+ <strong>Next:</strong><br/> 
+ <span>test
+</span>
+</a>
+</div>
+
+</nav>
+
+	<!-- 多说-->
+
+<section class="comment">
+<div class="ds-thread" data-thread-key="post-test1" data-title="test1" data-url="http://dreamleilei.github.io/2016/06/21/test1/"></div>
+</section>
+<!-- disqus-->
+
+
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
 <div id="asidepart">
@@ -237,7 +277,51 @@ $(document).ready(function(){
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
 
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"dreamleileigithubblog"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
 
 
 
@@ -297,5 +381,5 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 
 
   </body>
- </html>
+</html>
 
