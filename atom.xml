@@ -19,7 +19,11 @@
     <title>Hello World</title>
     <link href="http://dreamleilei.github.io/2016/06/20/hello-world/"/>
     <id>http://dreamleilei.github.io/2016/06/20/hello-world/</id>
+<<<<<<< HEAD
     <published>2016-06-20T02:51:46.149Z</published>
+=======
+    <published>2016-06-20T15:15:29.661Z</published>
+>>>>>>> 969b60d9efa3e6a2f40504812134653d5f642082
     <updated>2016-06-19T09:01:59.000Z</updated>
     
     <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
