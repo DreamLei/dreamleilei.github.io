@@ -40,7 +40,7 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace:
 
 # Category & Tag
@@ -68,5 +68,6 @@ theme: dream
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/dreamleilei/dreamleilei.github.io.git
+  repo: git@github.com:dreamleilei/dreamleilei.github.io.git
   branch: master
+
