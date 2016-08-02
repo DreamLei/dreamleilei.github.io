@@ -1,0 +1,3 @@
+[submodule "themes/dream"]
+	path = themes/dream
+	url = git@github.com:dreamleilei/hexo-theme-dream.git
