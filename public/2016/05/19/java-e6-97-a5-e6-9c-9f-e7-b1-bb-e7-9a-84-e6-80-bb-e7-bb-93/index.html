@@ -1,0 +1,503 @@
+
+ <!DOCTYPE HTML>
+<html  xmlns:wb="http://open.weibo.com/wb">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Java日期类的总结 | 磊磊的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="dreamleilei">
+    
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最近在做一个安卓的小玩意，因为用到了日期的一些操作，便写下一边博客，提醒大家如何少走坑路，正确使用正确的日期。
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Java 8中已经增加了time包了，但是如果由于条件的限制不能使用Java8的time包的">
+    
+    
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="dreamleilei" />
+    <meta name="twitter:title" content="Java日期类的总结 | 磊磊的博客" />
+      
+    
+    
+    <link rel="alternate" href="atom.xml" title="磊磊的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="磊磊的博客">磊磊的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">文章</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+						<li><a href="/atom.xml">RSS订阅</a></li>
+					
+					<li>
+					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/05/19/java-e6-97-a5-e6-9c-9f-e7-b1-bb-e7-9a-84-e6-80-bb-e7-bb-93/" title="Java日期类的总结" itemprop="url">Java日期类的总结</a>
+  </h1>
+  <!-- 显示作者
+  <p class="article-author">By
+    
+      <a href="http://dreamleilei.github.io" title="dreamleilei">dreamleilei</a>
+    </p>
+  -->  
+  <p class="article-time">
+    <time datetime="2016-05-19T07:42:27.000Z" itemprop="datePublished">2016-05-19</time>
+    Updated:<time datetime="2017-03-10T13:09:26.000Z" itemprop="dateModified">2017-03-10</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;最近在做一个安卓的小玩意，因为用到了日期的一些操作，便写下一边博客，提醒大家如何少走坑路，正确使用正确的日期。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Java 8中已经增加了time包了，但是如果由于条件的限制不能使用Java8的time包的话，那就使用Calendar类和SimpleDateFormat类来进行时间的操作了</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;之前一直想用Date类，后来发现Date类好多方法都废弃了。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;原因是Date中一些操作不方便，例如创建一个Date的时候，传入的year的值是要创建的年份-1990，而月份的值也是要减1的，这就不太符合人们的一些习惯。例如我们打算创建2016-05-20 我们的构造语句如下:</p>
+<p>[java]Date date = new Date(126, 4, 20);[/java]</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;于是找到一个更好用的类，Calendar类，这个类可以获取当前日期，也可以自定义日期。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;初始化一个Calendar类的语句:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;[java]Calendar calendar = Calendar.getInstance();[/java]</p>
+<p>如果我们想要自定一个一个时间,初始化Calendar类之后，可以通过[java]calendar.set(int key, int value);[/java] 的方法来进行时期的设定。</p>
+<p>其中key值包含Calendar.YEAR等枚举类型。</p>
+<p>要获取一个日期的年月日也是相当的方便，通过[java]calendar.getXXX()[/java]方法可以获得年月日</p>
+<p>除了年月日的获取，对时间的操作也是类似的。</p>
+<p>说了时间的创建和获取以及修改，我们再来谈一谈如何对时间进行格式化，这里用到时间格式化的类，SimpleDateFormat</p>
+<p>创建方式如下:</p>
+<p>[java]SimpleDateFormate simpleDateFormat = new SimpleDateFormat(&amp;quot;yyyy-MM-dd HH:mm:ss&amp;quot;);[/java]</p>
+<p>对日期进行格式可以通过[java]simpleDateFormate.format()[/java]方法进行格式化，但是切忌不能把Calendar对象之间传入，可以通过calendar.getTime()获取当前的Date对象，从而实日期的格式化。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-share" id="share">
+
+  
+<div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq"></a>
+    <a href="#" class="bds_renren" data-cmd="renren"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+
+
+
+
+</div>
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java-date/">Java date</a>►<a class="article-category-link" href="/categories/Java-date/Java复习/">Java复习</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a>
+  </div>
+
+
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/06/03/e6-b5-8b-e8-af-95/" title="测试">
+  <strong>Prev:</strong><br/>
+  <span>
+  测试</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/04/27/e5-88-9d-e5-ad-a6spring-mvc/"  title="初学Spring MVC">
+ <strong>Next:</strong><br/> 
+ <span>初学Spring MVC
+</span>
+</a>
+</div>
+
+</nav>
+
+	<!-- 多说-->
+
+<section class="comment">
+<div class="ds-thread" data-thread-key="post-Java日期类的总结" data-title="Java日期类的总结" data-url="http://dreamleilei.github.io/2016/05/19/java-e6-97-a5-e6-9c-9f-e7-b1-bb-e7-9a-84-e6-80-bb-e7-bb-93/"></div>
+</section>
+<!-- disqus-->
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  <p class="asidetitle">关注</p>
+<iframe width="100%" height="120" class="share_self" marginheight="5px" frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=3963329100&verifier=c36ba06c&dpc=1"></iframe>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Java-Java进阶/" title="-Java -Java进阶">-Java -Java进阶<sup>1</sup></a></li>
+		
+			<li><a href="/categories/折腾-博客搭建/" title="-折腾 -博客搭建">-折腾 -博客搭建<sup>1</sup></a></li>
+		
+			<li><a href="/categories/IDE/" title="IDE">IDE<sup>1</sup></a></li>
+		
+			<li><a href="/categories/IDE-使用/" title="IDE 使用">IDE 使用<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Java-JNI入门/" title="Java JNI入门">Java JNI入门<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Java-date/" title="Java date">Java date<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Java-date/Java复习/" title="Java复习">Java复习<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Java复习/" title="Java复习">Java复习<sup>8</sup></a></li>
+		
+			<li><a href="/categories/Spring-MVC/" title="Spring MVC">Spring MVC<sup>1</sup></a></li>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/categories/hibernate/" title="hibernate">hibernate<sup>1</sup></a></li>
+		
+			<li><a href="/categories/redis/" title="redis">redis<sup>2</sup></a></li>
+		
+			<li><a href="/categories/struts2/" title="struts2">struts2<sup>2</sup></a></li>
+		
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		
+			<li><a href="/categories/博客搭建/" title="博客搭建">博客搭建<sup>1</sup></a></li>
+		
+			<li><a href="/categories/博客测试/" title="博客测试">博客测试<sup>2</sup></a></li>
+		
+			<li><a href="/categories/实习/" title="实习">实习<sup>1</sup></a></li>
+		
+			<li><a href="/categories/折腾/" title="折腾">折腾<sup>4</sup></a></li>
+		
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>4</sup></a></li>
+		
+			<li><a href="/categories/未分类/" title="未分类">未分类<sup>2</sup></a></li>
+		
+			<li><a href="/categories/博客测试/未分类/" title="未分类">未分类<sup>1</sup></a></li>
+		
+			<li><a href="/categories/第三方登陆/" title="第三方登陆">第三方登陆<sup>1</sup></a></li>
+		
+			<li><a href="/categories/git/读书笔记/" title="读书笔记">读书笔记<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Java-Java进阶/" title="-Java -Java进阶">-Java -Java进阶<sup>1</sup></a></li>
+		
+			<li><a href="/tags/blog-折腾/" title="-blog -折腾">-blog -折腾<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Intellij-IDEA/" title="Intellij IDEA">Intellij IDEA<sup>4</sup></a></li>
+		
+			<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
+		
+			<li><a href="/tags/JSP/" title="JSP">JSP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java/" title="Java">Java<sup>10</sup></a></li>
+		
+			<li><a href="/tags/Java-nio/" title="Java nio">Java nio<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Rest/" title="Rest">Rest<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Servlet/" title="Servlet">Servlet<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+		
+			<li><a href="/tags/hibernate/" title="hibernate">hibernate<sup>1</sup></a></li>
+		
+			<li><a href="/tags/js/" title="js">js<sup>1</sup></a></li>
+		
+			<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/mysql/" title="mysql">mysql<sup>4</sup></a></li>
+		
+			<li><a href="/tags/mysql-triggl/" title="mysql triggl">mysql triggl<sup>1</sup></a></li>
+		
+			<li><a href="/tags/nio/" title="nio">nio<sup>1</sup></a></li>
+		
+			<li><a href="/tags/oauth/" title="oauth">oauth<sup>1</sup></a></li>
+		
+			<li><a href="/tags/redis/" title="redis">redis<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+      <li><a href="http://blogpicture.dreamleilei.com/qq_link" target="_blank" title="磊磊的QQ">QQ</a></li>
+      <li><a href="https://github.com/dreamleilei" target="_blank" title="dreajay github">github</a></li>
+      <li><a href="http://blogpicture.dreamleilei.com/weixin_link.png" target="_blank" title="磊磊的微信">微信</a></li>
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 没有礁石，就没有美丽的浪花；没有挫折，就没有壮丽的人生！ <br/>
+			再长的路，一步步也能走完，再短的路，不迈开双脚也无法到达，平凡的脚步也可以走完伟大的行程！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/dreamleilei" target="_blank" title="weibo"></a>
+		
+		
+		<a href="https://twitter.com/dreamleilei" target="_blank" title="twitter"></a>
+		
+		
+		<a href="https://github.com/dreamleilei" target="_blank" title="github"></a>
+		
+		
+		<a href="https://www.facebook.com/dreamleilei" target="_blank" title="facebook"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="pacman">pacman</a> © 2017 
+		
+		<a href="http://dreamleilei.github.io" target="_blank" title="dreamleilei">dreamleilei</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"dreamleilei123"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F77edef7e6931022edbd2322ec66456e1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+<script type="text/javascript">
+	(function($) { 
+		// When to show the scroll link
+		// higher number = scroll link appears further down the page   
+		var upperLimit = 300;
+		
+		// Our scroll link element
+		var scrollElem = $('#totop');
+	   
+		// Scroll to top speed
+		var scrollSpeed = 800;
+	   
+		// Show and hide the scroll to top link based on scroll position   
+		scrollElem.hide();
+		$(window).scroll(function () {            
+			var scrollTop = $(document).scrollTop();       
+			if ( scrollTop > upperLimit ) {
+				$(scrollElem).stop().fadeTo(300, 1); // fade back in           
+			}else{       
+				$(scrollElem).stop().fadeTo(300, 0); // fade out
+			}
+		});
+		// Scroll to top animation on click
+		$(scrollElem).click(function(){
+			$('html, body').animate({scrollTop:0}, scrollSpeed); return false;
+		});
+	})(jQuery);
+</script>
+
+
+
+  </body>
+</html>
+

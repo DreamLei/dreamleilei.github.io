@@ -1,0 +1,519 @@
+
+ <!DOCTYPE HTML>
+<html  xmlns:wb="http://open.weibo.com/wb">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>mysql的简单语句 | 磊磊的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="dreamleilei">
+    
+    <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 最近在做一个小型的图书管理系统,用到了mysql的一点操作,不用不知道,一用吓一跳,码了一小会sql的语句,才发现自己的sql学的是如此的差,连基本的语句都不会了,更不用说是设计数据库了.
+&amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;">
+    
+    
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="dreamleilei" />
+    <meta name="twitter:title" content="mysql的简单语句 | 磊磊的博客" />
+      
+    
+    
+    <link rel="alternate" href="atom.xml" title="磊磊的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="磊磊的博客">磊磊的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">文章</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+						<li><a href="/atom.xml">RSS订阅</a></li>
+					
+					<li>
+					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/06/15/mysql-e7-9a-84-e7-ae-80-e5-8d-95-e8-af-ad-e5-8f-a5/" title="mysql的简单语句" itemprop="url">mysql的简单语句</a>
+  </h1>
+  <!-- 显示作者
+  <p class="article-author">By
+    
+      <a href="http://dreamleilei.github.io" title="dreamleilei">dreamleilei</a>
+    </p>
+  -->  
+  <p class="article-time">
+    <time datetime="2015-06-15T06:28:18.000Z" itemprop="datePublished">2015-06-15</time>
+    Updated:<time datetime="2017-03-10T13:09:26.000Z" itemprop="dateModified">2017-03-10</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p><span style="font-size:20px;">&nbsp; &nbsp; &nbsp; &nbsp; 最近在做一个小型的图书管理系统,用到了mysql的一点操作,不用不知道,一用吓一跳,码了一小会sql的语句,才发现自己的sql学的是如此的差,连基本的语句都不会了,更不用说是设计数据库了.</span></p>
+<pre><code>&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;span style=&quot;font-size:20px;&quot;&gt;基本的操作语句就不再陈述了,简单的,一些技巧性的东西,在此罗列一下,比如说想要让某一列的数值自动的增长,可以在建表的时候给某个列设置auto_increment 属性,然后设置在建表后的括号后面加上语句auto_increment=n ,n表示增长的基数. 然后移动字段,比如说你想把一个叫做Id的列移动到首行,这时候你要用到alter table &amp;lt;表名&amp;gt;&amp;lt;列名&amp;gt;&amp;lt;属性&amp;gt; first; 或者你想把某一个列移动到某个列的后面,这时候要用alter tabke&amp;lt;表名&amp;gt;&amp;lt;列名&amp;gt;&amp;lt;属性&amp;gt; after &amp;lt;列名&amp;gt;. 如果想要更改某个表的字符编码可以用alte table &amp;lt;表名&amp;gt; convert to character set &amp;lt;字符编码&amp;gt;.&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; 接下来,谈谈用户的增加删除,修改密码.&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;增加用户: 可以用create user &amp;#39;&amp;lt;username&amp;gt;&amp;#39;@&amp;#39;&amp;lt;host&amp;gt;&amp;#39; identitied by &amp;#39;password&amp;#39;&amp;nbsp;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 或者是insert into mysql.user(Host, User, Password) valuse(&amp;#39;%&amp;#39;, &amp;#39;test&amp;#39;, password(&amp;#39;test&amp;#39;)) &amp;#39;%&amp;#39;表示在任意主机可以登录,上条语句表示创建了一个test用户,密码为test. 要使命令生效,必须调用flush privileges.&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;删除用户:和增加用户相对立,drop user &amp;#39;&amp;lt;usernaem&amp;gt;&amp;#39;@&amp;#39;&amp;lt;host&amp;gt;&amp;#39; ;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;或者是通过修改mysql.user表来进行删除修改 delete from user where User = &amp;#39;user&amp;#39; and &amp;nbsp;Host = &amp;#39;host&amp;#39;;&lt;/span&gt;
+
+&amp;nbsp;&amp;nbsp;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;给用户授权: grant &amp;lt;privileges&amp;gt; on db.tb to &amp;#39;user&amp;#39;@&amp;#39;host&amp;#39;其中db.db表示给用户某个表授权,如果是*.*表示对所有的数据库授权,db.*表示对db数据库里面的所有表授权,然后&amp;lt;privileges&amp;gt; 有select , update, delete , alter, index, 等权限.&lt;/span&gt;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 看一下某一个用户有哪些权限可以通过 show grants for &amp;#39;user&amp;#39;@&amp;#39;host&amp;#39;查看&amp;nbsp;&lt;/span&gt;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;给用户删除权利: revoke&amp;lt;privileges&amp;gt; on db.tb from &amp;#39;user&amp;#39;@&amp;#39;host&amp;#39; 其中,所有的参数与授权的时候的参数是一致的.&lt;/span&gt;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;这个时候注意的是,如果你在授权的时候 grant all on db.special to &amp;#39;lei&amp;#39;@&amp;#39;localhost&amp;#39; 和 grant all on db.* to &amp;#39;lei&amp;#39;@&amp;#39;localhost&amp;#39;, 但是再给用户删除权利的时候只是调用revoke all on db.* 这个时候用户仍然具有 db.special的所有权限，这是一个比较特别的地方，具体的原因我也不知道．&lt;/span&gt;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;　　　用户密码的修改：可以通过　set password for &amp;#39;user&amp;#39;@&amp;#39;host&amp;#39; = password(&amp;#39;newpassword&amp;#39;)来进行修改,也可以通过修改 mysql.user表来进行修改.&lt;/span&gt;
+</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;修改root密码:(1)在mysql.cnf中加上skip-grant-table然后重启mysql的服务,然后通过修改mysql的user表中的部分来进行密码的修改<br></span></p>
+<p><span style="font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)mysqladmin -u root -p password newpasswd 然后输入密码,这个时候要用root权限,输入新密码<br></span></p>
+<p><span style="font-size: 20px;"><br>    &nbsp;</span></p>
+<pre><code>&amp;nbsp;
+
+&amp;nbsp;
+</code></pre>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-share" id="share">
+
+  
+<div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq"></a>
+    <a href="#" class="bds_renren" data-cmd="renren"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+
+
+
+
+</div>
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/数据库/">数据库</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/数据库/">数据库</a><a href="/tags/mysql/">mysql</a>
+  </div>
+
+
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/06/19/idea-maven-struts2/" title="Idea + maven + struts2">
+  <strong>Prev:</strong><br/>
+  <span>
+  Idea + maven + struts2</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/06/15/mariadb-e4-bf-ae-e6-94-b9-e5-ad-97-e7-ac-a6-e7-bc-96-e7-a0-81/"  title="Mariadb 修改字符编码">
+ <strong>Next:</strong><br/> 
+ <span>Mariadb 修改字符编码
+</span>
+</a>
+</div>
+
+</nav>
+
+	<!-- 多说-->
+
+<section class="comment">
+<div class="ds-thread" data-thread-key="post-mysql的简单语句" data-title="mysql的简单语句" data-url="http://dreamleilei.github.io/2015/06/15/mysql-e7-9a-84-e7-ae-80-e5-8d-95-e8-af-ad-e5-8f-a5/"></div>
+</section>
+<!-- disqus-->
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  <p class="asidetitle">关注</p>
+<iframe width="100%" height="120" class="share_self" marginheight="5px" frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=3963329100&verifier=c36ba06c&dpc=1"></iframe>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Java-Java进阶/" title="-Java -Java进阶">-Java -Java进阶<sup>1</sup></a></li>
+		
+			<li><a href="/categories/折腾-博客搭建/" title="-折腾 -博客搭建">-折腾 -博客搭建<sup>1</sup></a></li>
+		
+			<li><a href="/categories/IDE/" title="IDE">IDE<sup>1</sup></a></li>
+		
+			<li><a href="/categories/IDE-使用/" title="IDE 使用">IDE 使用<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Java-JNI入门/" title="Java JNI入门">Java JNI入门<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Java-date/" title="Java date">Java date<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Java-date/Java复习/" title="Java复习">Java复习<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Java复习/" title="Java复习">Java复习<sup>8</sup></a></li>
+		
+			<li><a href="/categories/Spring-MVC/" title="Spring MVC">Spring MVC<sup>1</sup></a></li>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/categories/hibernate/" title="hibernate">hibernate<sup>1</sup></a></li>
+		
+			<li><a href="/categories/redis/" title="redis">redis<sup>2</sup></a></li>
+		
+			<li><a href="/categories/struts2/" title="struts2">struts2<sup>2</sup></a></li>
+		
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		
+			<li><a href="/categories/博客搭建/" title="博客搭建">博客搭建<sup>1</sup></a></li>
+		
+			<li><a href="/categories/博客测试/" title="博客测试">博客测试<sup>2</sup></a></li>
+		
+			<li><a href="/categories/实习/" title="实习">实习<sup>1</sup></a></li>
+		
+			<li><a href="/categories/折腾/" title="折腾">折腾<sup>4</sup></a></li>
+		
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>4</sup></a></li>
+		
+			<li><a href="/categories/未分类/" title="未分类">未分类<sup>2</sup></a></li>
+		
+			<li><a href="/categories/博客测试/未分类/" title="未分类">未分类<sup>1</sup></a></li>
+		
+			<li><a href="/categories/第三方登陆/" title="第三方登陆">第三方登陆<sup>1</sup></a></li>
+		
+			<li><a href="/categories/git/读书笔记/" title="读书笔记">读书笔记<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Java-Java进阶/" title="-Java -Java进阶">-Java -Java进阶<sup>1</sup></a></li>
+		
+			<li><a href="/tags/blog-折腾/" title="-blog -折腾">-blog -折腾<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Intellij-IDEA/" title="Intellij IDEA">Intellij IDEA<sup>4</sup></a></li>
+		
+			<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
+		
+			<li><a href="/tags/JSP/" title="JSP">JSP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java/" title="Java">Java<sup>10</sup></a></li>
+		
+			<li><a href="/tags/Java-nio/" title="Java nio">Java nio<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Rest/" title="Rest">Rest<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Servlet/" title="Servlet">Servlet<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+		
+			<li><a href="/tags/hibernate/" title="hibernate">hibernate<sup>1</sup></a></li>
+		
+			<li><a href="/tags/js/" title="js">js<sup>1</sup></a></li>
+		
+			<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/mysql/" title="mysql">mysql<sup>4</sup></a></li>
+		
+			<li><a href="/tags/mysql-triggl/" title="mysql triggl">mysql triggl<sup>1</sup></a></li>
+		
+			<li><a href="/tags/nio/" title="nio">nio<sup>1</sup></a></li>
+		
+			<li><a href="/tags/oauth/" title="oauth">oauth<sup>1</sup></a></li>
+		
+			<li><a href="/tags/redis/" title="redis">redis<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+      <li><a href="http://blogpicture.dreamleilei.com/qq_link" target="_blank" title="磊磊的QQ">QQ</a></li>
+      <li><a href="https://github.com/dreamleilei" target="_blank" title="dreajay github">github</a></li>
+      <li><a href="http://blogpicture.dreamleilei.com/weixin_link.png" target="_blank" title="磊磊的微信">微信</a></li>
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 没有礁石，就没有美丽的浪花；没有挫折，就没有壮丽的人生！ <br/>
+			再长的路，一步步也能走完，再短的路，不迈开双脚也无法到达，平凡的脚步也可以走完伟大的行程！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/dreamleilei" target="_blank" title="weibo"></a>
+		
+		
+		<a href="https://twitter.com/dreamleilei" target="_blank" title="twitter"></a>
+		
+		
+		<a href="https://github.com/dreamleilei" target="_blank" title="github"></a>
+		
+		
+		<a href="https://www.facebook.com/dreamleilei" target="_blank" title="facebook"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="pacman">pacman</a> © 2017 
+		
+		<a href="http://dreamleilei.github.io" target="_blank" title="dreamleilei">dreamleilei</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"dreamleilei123"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F77edef7e6931022edbd2322ec66456e1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+<script type="text/javascript">
+	(function($) { 
+		// When to show the scroll link
+		// higher number = scroll link appears further down the page   
+		var upperLimit = 300;
+		
+		// Our scroll link element
+		var scrollElem = $('#totop');
+	   
+		// Scroll to top speed
+		var scrollSpeed = 800;
+	   
+		// Show and hide the scroll to top link based on scroll position   
+		scrollElem.hide();
+		$(window).scroll(function () {            
+			var scrollTop = $(document).scrollTop();       
+			if ( scrollTop > upperLimit ) {
+				$(scrollElem).stop().fadeTo(300, 1); // fade back in           
+			}else{       
+				$(scrollElem).stop().fadeTo(300, 0); // fade out
+			}
+		});
+		// Scroll to top animation on click
+		$(scrollElem).click(function(){
+			$('html, body').animate({scrollTop:0}, scrollSpeed); return false;
+		});
+	})(jQuery);
+</script>
+
+
+
+  </body>
+</html>
+

@@ -1,0 +1,519 @@
+
+ <!DOCTYPE HTML>
+<html  xmlns:wb="http://open.weibo.com/wb">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Java nio | 磊磊的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="dreamleilei">
+    
+    <meta name="description" content="##    最近再看I/O的一些东西,写出来,感觉有点水,仅供自己复习的时候看
+&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;前面基本的I/O流都差不多有看过,根据字节流和字符流也是比较容易区分的,但是有时候需要写入固定格式的数据,这时候就有点头疼,比如">
+    
+    
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="dreamleilei" />
+    <meta name="twitter:title" content="Java nio | 磊磊的博客" />
+      
+    
+    
+    <link rel="alternate" href="atom.xml" title="磊磊的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="磊磊的博客">磊磊的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">文章</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+						<li><a href="/atom.xml">RSS订阅</a></li>
+					
+					<li>
+					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/06/04/java-nio/" title="Java nio" itemprop="url">Java nio</a>
+  </h1>
+  <!-- 显示作者
+  <p class="article-author">By
+    
+      <a href="http://dreamleilei.github.io" title="dreamleilei">dreamleilei</a>
+    </p>
+  -->  
+  <p class="article-time">
+    <time datetime="2015-06-04T05:18:26.000Z" itemprop="datePublished">2015-06-04</time>
+    Updated:<time datetime="2017-03-10T13:09:26.000Z" itemprop="dateModified">2017-03-10</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>##<br>    <span style="font-size:20px;">最近再看I/O的一些东西,写出来,感觉有点水,仅供自己复习的时候看</span></p>
+<pre><code>&lt;span style=&quot;font-size:20px;&quot;&gt;前面基本的I/O流都差不多有看过,根据字节流和字符流也是比较容易区分的,但是有时候需要写入固定格式的数据,这时候就有点头疼,比如说我要写书10条double类型的数据和10条int类型的数据到文件中,用基本的输入输出流有点麻烦,必须把double和int类型转换成String才能写入,这个时候就可以用到DataInputStream 和 OutputStream的字节流来写入,如果想要用字符流写入Int和double类型,用PrintWriter可以方便的写入,不过读出的时候却比较麻烦.&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;还有之前遗忘的一点就是Sytstem.setIn(InputStream) System.setOut(InputStream) System.setErr(inputStream)这三个是系统的输入输出流重定向用的.&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;字节流和字符流的区别除了基本单位不同外,我还学到了一点就是字符流是通过系统的缓冲区为中介的,如果你用字符流向文件写入的时候忘记了close(),你会那发现文件中并没有写入数据,这是因为字符流中读入的数据仍然存在系统的缓冲区中,这是你需要flush或者close掉字符流,你就会发现已经存在里面了.&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;对象的序列化也是I/O的比较重要的一个部分,不过没有仔细的研究过.&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;字节流转换为字符流的InputStreamReader 和OutputStreamWriter可以很好的帮助我们从键盘中输入汉字,然后以字符的形式写入到另一个流中(比如说写入到文本中,此时不会出现乱码)&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;最近还有在看一些NIO的东西&lt;/span&gt;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;nio中的BtyeBuffer可以人为的去创建一段缓冲区,通过调用ByteBuffer.allocate(size)来创建,除了ByteBuffer外,其他类型的Buffer也都有,不过ByteBuffer比较常见.&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;nio中多了的东西叫做Channel的,FileInputStream, FileOutputStream和RandomAcessFile,都可以调用getChannel()方法,产生一个通道,利用这个特性可以提高IO读写的速度&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;read() 和write()方法中可以直接以自己定义的缓冲区作为目标,当缓冲区从读状态变成写入的时候,一定要先调用flip()这个方法把limit设置为position,然后把position设置为0,然后写入的时候刚好把要写入的内容写入,然后调用clear方法,这是把position设置为0,limit设置为capcity,又实现了从0开始读数据.&lt;/span&gt;
+</code></pre>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-share" id="share">
+
+  
+<div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq"></a>
+    <a href="#" class="bds_renren" data-cmd="renren"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+
+
+
+
+</div>
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java复习/">Java复习</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/nio/">nio</a>
+  </div>
+
+
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/06/05/java-e5-a4-8d-e4-b9-a0-e8-b5-84-e6-96-99-e5-b0-8f-e6-95-b4-e7-90-86/" title="Java复习资料小整理">
+  <strong>Prev:</strong><br/>
+  <span>
+  Java复习资料小整理</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/06/04/java-nio-e5-ae-9e-e7-8e-b0-e6-96-87-e4-bb-b6-e5-a4-8d-e5-88-b6/"  title="Java nio 实现文件复制">
+ <strong>Next:</strong><br/> 
+ <span>Java nio 实现文件复制
+</span>
+</a>
+</div>
+
+</nav>
+
+	<!-- 多说-->
+
+<section class="comment">
+<div class="ds-thread" data-thread-key="post-Java nio" data-title="Java nio" data-url="http://dreamleilei.github.io/2015/06/04/java-nio/"></div>
+</section>
+<!-- disqus-->
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  <p class="asidetitle">关注</p>
+<iframe width="100%" height="120" class="share_self" marginheight="5px" frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=3963329100&verifier=c36ba06c&dpc=1"></iframe>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Java-Java进阶/" title="-Java -Java进阶">-Java -Java进阶<sup>1</sup></a></li>
+		
+			<li><a href="/categories/折腾-博客搭建/" title="-折腾 -博客搭建">-折腾 -博客搭建<sup>1</sup></a></li>
+		
+			<li><a href="/categories/IDE/" title="IDE">IDE<sup>1</sup></a></li>
+		
+			<li><a href="/categories/IDE-使用/" title="IDE 使用">IDE 使用<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Java-JNI入门/" title="Java JNI入门">Java JNI入门<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Java-date/" title="Java date">Java date<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Java-date/Java复习/" title="Java复习">Java复习<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Java复习/" title="Java复习">Java复习<sup>8</sup></a></li>
+		
+			<li><a href="/categories/Spring-MVC/" title="Spring MVC">Spring MVC<sup>1</sup></a></li>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/categories/hibernate/" title="hibernate">hibernate<sup>1</sup></a></li>
+		
+			<li><a href="/categories/redis/" title="redis">redis<sup>2</sup></a></li>
+		
+			<li><a href="/categories/struts2/" title="struts2">struts2<sup>2</sup></a></li>
+		
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		
+			<li><a href="/categories/博客搭建/" title="博客搭建">博客搭建<sup>1</sup></a></li>
+		
+			<li><a href="/categories/博客测试/" title="博客测试">博客测试<sup>2</sup></a></li>
+		
+			<li><a href="/categories/实习/" title="实习">实习<sup>1</sup></a></li>
+		
+			<li><a href="/categories/折腾/" title="折腾">折腾<sup>4</sup></a></li>
+		
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>4</sup></a></li>
+		
+			<li><a href="/categories/未分类/" title="未分类">未分类<sup>2</sup></a></li>
+		
+			<li><a href="/categories/博客测试/未分类/" title="未分类">未分类<sup>1</sup></a></li>
+		
+			<li><a href="/categories/第三方登陆/" title="第三方登陆">第三方登陆<sup>1</sup></a></li>
+		
+			<li><a href="/categories/git/读书笔记/" title="读书笔记">读书笔记<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Java-Java进阶/" title="-Java -Java进阶">-Java -Java进阶<sup>1</sup></a></li>
+		
+			<li><a href="/tags/blog-折腾/" title="-blog -折腾">-blog -折腾<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Intellij-IDEA/" title="Intellij IDEA">Intellij IDEA<sup>4</sup></a></li>
+		
+			<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
+		
+			<li><a href="/tags/JSP/" title="JSP">JSP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java/" title="Java">Java<sup>10</sup></a></li>
+		
+			<li><a href="/tags/Java-nio/" title="Java nio">Java nio<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Rest/" title="Rest">Rest<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Servlet/" title="Servlet">Servlet<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+		
+			<li><a href="/tags/hibernate/" title="hibernate">hibernate<sup>1</sup></a></li>
+		
+			<li><a href="/tags/js/" title="js">js<sup>1</sup></a></li>
+		
+			<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/mysql/" title="mysql">mysql<sup>4</sup></a></li>
+		
+			<li><a href="/tags/mysql-triggl/" title="mysql triggl">mysql triggl<sup>1</sup></a></li>
+		
+			<li><a href="/tags/nio/" title="nio">nio<sup>1</sup></a></li>
+		
+			<li><a href="/tags/oauth/" title="oauth">oauth<sup>1</sup></a></li>
+		
+			<li><a href="/tags/redis/" title="redis">redis<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+      <li><a href="http://blogpicture.dreamleilei.com/qq_link" target="_blank" title="磊磊的QQ">QQ</a></li>
+      <li><a href="https://github.com/dreamleilei" target="_blank" title="dreajay github">github</a></li>
+      <li><a href="http://blogpicture.dreamleilei.com/weixin_link.png" target="_blank" title="磊磊的微信">微信</a></li>
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 没有礁石，就没有美丽的浪花；没有挫折，就没有壮丽的人生！ <br/>
+			再长的路，一步步也能走完，再短的路，不迈开双脚也无法到达，平凡的脚步也可以走完伟大的行程！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/dreamleilei" target="_blank" title="weibo"></a>
+		
+		
+		<a href="https://twitter.com/dreamleilei" target="_blank" title="twitter"></a>
+		
+		
+		<a href="https://github.com/dreamleilei" target="_blank" title="github"></a>
+		
+		
+		<a href="https://www.facebook.com/dreamleilei" target="_blank" title="facebook"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="pacman">pacman</a> © 2017 
+		
+		<a href="http://dreamleilei.github.io" target="_blank" title="dreamleilei">dreamleilei</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"dreamleilei123"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F77edef7e6931022edbd2322ec66456e1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+<script type="text/javascript">
+	(function($) { 
+		// When to show the scroll link
+		// higher number = scroll link appears further down the page   
+		var upperLimit = 300;
+		
+		// Our scroll link element
+		var scrollElem = $('#totop');
+	   
+		// Scroll to top speed
+		var scrollSpeed = 800;
+	   
+		// Show and hide the scroll to top link based on scroll position   
+		scrollElem.hide();
+		$(window).scroll(function () {            
+			var scrollTop = $(document).scrollTop();       
+			if ( scrollTop > upperLimit ) {
+				$(scrollElem).stop().fadeTo(300, 1); // fade back in           
+			}else{       
+				$(scrollElem).stop().fadeTo(300, 0); // fade out
+			}
+		});
+		// Scroll to top animation on click
+		$(scrollElem).click(function(){
+			$('html, body').animate({scrollTop:0}, scrollSpeed); return false;
+		});
+	})(jQuery);
+</script>
+
+
+
+  </body>
+</html>
+

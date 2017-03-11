@@ -1,0 +1,601 @@
+
+ <!DOCTYPE HTML>
+<html  xmlns:wb="http://open.weibo.com/wb">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Servlet复习 | 磊磊的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="dreamleilei">
+    
+    <meta name="description" content="&amp;nbsp;
+之前学过jsp,servlet和struts2基础,因为学完后不久就在准备最后的Java比赛和期末考试,好久没有写关于这些方面的代码了,于是趁着最近的时间复习一下有关这方面的内容.&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size:20px;&amp;q">
+    
+    
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="dreamleilei" />
+    <meta name="twitter:title" content="Servlet复习 | 磊磊的博客" />
+      
+    
+    
+    <link rel="alternate" href="atom.xml" title="磊磊的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="磊磊的博客">磊磊的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">文章</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+						<li><a href="/atom.xml">RSS订阅</a></li>
+					
+					<li>
+					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/07/24/servlet-e5-a4-8d-e4-b9-a0/" title="Servlet复习" itemprop="url">Servlet复习</a>
+  </h1>
+  <!-- 显示作者
+  <p class="article-author">By
+    
+      <a href="http://dreamleilei.github.io" title="dreamleilei">dreamleilei</a>
+    </p>
+  -->  
+  <p class="article-time">
+    <time datetime="2015-07-23T17:42:27.000Z" itemprop="datePublished">2015-07-24</time>
+    Updated:<time datetime="2017-03-10T13:09:26.000Z" itemprop="dateModified">2017-03-10</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p><span style="font-size:20px;">&nbsp;</span></p>
+<pre><code>之前学过jsp,servlet和struts2基础,因为学完后不久就在准备最后的Java比赛和期末考试,好久没有写关于这些方面的代码了,于是趁着最近的时间复习一下有关这方面的内容.&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;我学的都是最基础的,最简单的东西.&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;首先谈一下webapp的工作路径吧,首先要有一个根目录,然后根目录下面有一个WEB-INF文件夹和src文件夹,在这个文件夹里面有一个web.xml文件(Servlet3.0以后这个文件可以没有),然后相应的jsp页面应该放在根目录下面,如果放在WEB-INF文件夹下面,是没有办法直接在浏览器里输入URL访问的,但是可以通过相应的映射访问,(有些页面出于安全考虑,可以放在WEB-INF下面,这样一定程度上可以提高安全性),一般WEB-INF文件夹下面有class文件夹和lib文件夹,其中lib文件夹是存放应用中需要用到的第三方jar包,class文件夹存放.class文件.
+
+根目录下的src文件夹是存放各种用到的源文件,比如自己写的Servlet文件或者Filter文件或者JavaBean.&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;接下来谈一下web.xml的配置,有一篇博客写的很棒,在此把它给粘上http://www.cnblogs.com/chinafine/archive/2010/09/02/1815980.html之前一直一位web.xml中的元素是没有顺序的,后来发现自己错的相当严重,导致花了好几个小时找错误,找不到哪里错了.
+
+最基础的是&amp;lt;servlet&amp;gt;元素一定在&amp;lt;servlet-mapping&amp;gt;元素之后,而&amp;lt;context&amp;gt;元素在&amp;lt;servlet&amp;gt;元素之前,&amp;lt;context-param&amp;gt;在&amp;lt;servlet&amp;gt;元素之前,在此列出一下最常用的一些元素的顺序:&amp;lt;display-name&amp;gt; , &amp;lt;description&amp;gt;, &amp;lt;filter&amp;gt;,&amp;lt;filter-mapping&amp;gt;, &amp;lt;listener&amp;gt;,&amp;lt;servlet&amp;gt; ,&amp;lt;servlet-mapping&amp;gt;,除了通过配置web.xml可以实现配置外,还可以通过注解的形式配置.&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;&amp;lt;servlet&amp;gt;配置:需要的子元素&amp;lt;servlet-name&amp;gt; &amp;lt;servlet-classs&amp;gt;(这两个元素是必须的)
+
+&amp;nbsp;&amp;lt;servlet-mapping&amp;gt;配置:需要子元素&amp;lt;servlet-name&amp;gt;(此元素的值必须与&amp;lt;servlet&amp;gt;中的某个值匹配) &amp;lt;url-pattern&amp;gt;(次元素可以有多个值) (这两个元素是必须的)
+
+也可以通过注解的形式来进行配置Servlet(要求Servlet版本至少3.0)格式如下:
+
+@WebServlet(name=&amp;quot;name&amp;quot;, urlPatterns={&amp;quot;pattern1&amp;quot;, &amp;quot;pattern2&amp;#39;}, initParams={@WebInitParam(name=&amp;quot;name&amp;quot;, value=&amp;quot;value&amp;quot;), @WebInitParam(name=&amp;quot;name1&amp;quot;, value=&amp;quot;value1&amp;quot;)})&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;&amp;lt;filter&amp;gt;配置:和servlet的配置基本一致,在此就不再重复.&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;&amp;lt;listener&amp;gt;配置:只需要&amp;lt; listener-class&amp;gt;子元素&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;&amp;lt;context-param&amp;gt;配置:需要的子元素&amp;lt;param-name&amp;gt;和&amp;lt;param-value&amp;gt;(至少这两个元素,且只准出现一次)&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;说完了简单web.xml的配置,说一下简单的Servlet,创建一个Servlet必须要继承HttpServlet这个类,这个类中有好多方法,比如说do+请求方式方法,如doGet, doPost等等,这些方法的参数是HttpServletRequest类型和HttpServletResponse类型,如果是直接请求一个Servlet的话,是service()方法来对它进行响应的.&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;HttpServletRequest接口实现了ServletRequest接口,ServletRequest接口的方法有getContextType(), getContextLength(),getInputStream(), getLocalAddr(), getLocalName(), getLocalPort(),getParameter(String name),
+
+getAttribue(String name), setAttribute(String name, Object obj),removeAttribute(String name),getParameterNames(),getParameterMap()等等,HttpServletRequest接口中的方法:getCookies(), getHeader(String name), getHeaderNames(),getMethod(),getRequestURI(), getQueryString(),等.&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;HttpServletResponse接口实现了ServletResponse接口,ServletResponse接口的常用方法有:setContextType,setContextLength(),getOutputStream(),getWriter(),reset(),getCharacterEncoding(),flushBuffer(),
+
+HttpServletResponse接口中添加的方法有addHeader(String name, String value), setHeader(String name, String value), addCookie(Cookie cookie), setStatus(int sc), sendError(int sc);&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;ServletConfig接口中的方法getInitParameter(String name), getInitParameterNames(),getServleContext(),getServletName(),这个接口实例化后产生的是一个servlet的实例,而getInitParameter(String name)方法获取的参数来自于&amp;lt;servlet&amp;gt;里定义的或者在@WebServlet(initparameters)里面注解的参数.getServeletContext()方法返回一个ServletContext的实例,&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;ServletContext接口 ,每个Web应用有唯一的ServletContext对象,该接口中定义的方法有:setAttitute(String name, Object obj), getAttribuer(String name),getInitParameter(String name_, getInitParameterNames(), getAttributeNames(),getRequestDispatcher(String path), getRealPath(String path), log(String msg)&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;HttpSession接口 :getId(), invalidata(),setAttribute(String name, Object, obj), getAttribute(String name), getAttributeNames(), removeAttribueName(String name), isNew(),SetMaxInactiveInterval(int interval),getServletContext().&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;Cookie接口:&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;列举完了几个常用的Servlet接口,接下来谈一下Web应用,
+
+Web应用的生命周期:
+
+(1)启动阶段
+
+(2)运行阶段
+
+(3)终止阶段&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;Web应用的启动阶段:
+
+(1)将web.xml读入内存中
+
+(2)创建一个ServletContext实例
+
+(3)初始化Filter
+
+(4)初始化必要的Servlet(load-on-startup)&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;Web应用的运行阶段:Servlet都处于待命的状态&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;Web应用的终止阶段:
+
+(1)销毁Servlet实例
+
+(2)销毁Filter
+
+(3)销毁与JavaWeb应用有关的对象,如ServletContext&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;谈一下Servlet的生命周期:
+
+(1)初始化阶段
+
+(2)运行阶段
+
+(3)销毁阶段&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;初始化阶段:
+
+(1)加载.class文件到内存中
+
+(2)Servlet创建ServletConfig对象.
+
+(3)创建Servlet对象
+
+(4)调用Servlet的Init()方法&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;运行阶段:&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;销毁阶段;
+
+调用destory()方法.销毁Servlet对象,然后销毁ServletConfig对象.&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;包含与转发:
+
+ServletContext对象的getRequestDispatcher().forward() 或者.include();
+
+或者调用request对象的相应方法,两者的区别是前者只能使用绝对路径,后者可以使用相对路径.&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;重定向:
+
+response.sendRedirect(String location)重定向会丢失所有的请求参数.&lt;/span&gt;
+
+&amp;nbsp;
+
+&amp;nbsp;
+</code></pre>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-share" id="share">
+
+  
+<div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq"></a>
+    <a href="#" class="bds_renren" data-cmd="renren"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+
+
+
+
+</div>
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java复习/">Java复习</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/Servlet/">Servlet</a>
+  </div>
+
+
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/07/24/jsp-e5-a4-8d-e4-b9-a0/" title="JSP复习">
+  <strong>Prev:</strong><br/>
+  <span>
+  JSP复习</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/07/22/mysql-triggle-e9-81-87-e5-88-b0-e7-9a-84-e5-b0-8f-e9-97-ae-e9-a2-98/"  title="mysql triggle 遇到的小问题">
+ <strong>Next:</strong><br/> 
+ <span>mysql triggle 遇到的小问题
+</span>
+</a>
+</div>
+
+</nav>
+
+	<!-- 多说-->
+
+<section class="comment">
+<div class="ds-thread" data-thread-key="post-Servlet复习" data-title="Servlet复习" data-url="http://dreamleilei.github.io/2015/07/24/servlet-e5-a4-8d-e4-b9-a0/"></div>
+</section>
+<!-- disqus-->
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  <p class="asidetitle">关注</p>
+<iframe width="100%" height="120" class="share_self" marginheight="5px" frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=3963329100&verifier=c36ba06c&dpc=1"></iframe>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Java-Java进阶/" title="-Java -Java进阶">-Java -Java进阶<sup>1</sup></a></li>
+		
+			<li><a href="/categories/折腾-博客搭建/" title="-折腾 -博客搭建">-折腾 -博客搭建<sup>1</sup></a></li>
+		
+			<li><a href="/categories/IDE/" title="IDE">IDE<sup>1</sup></a></li>
+		
+			<li><a href="/categories/IDE-使用/" title="IDE 使用">IDE 使用<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Java-JNI入门/" title="Java JNI入门">Java JNI入门<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Java-date/" title="Java date">Java date<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Java-date/Java复习/" title="Java复习">Java复习<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Java复习/" title="Java复习">Java复习<sup>8</sup></a></li>
+		
+			<li><a href="/categories/Spring-MVC/" title="Spring MVC">Spring MVC<sup>1</sup></a></li>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/categories/hibernate/" title="hibernate">hibernate<sup>1</sup></a></li>
+		
+			<li><a href="/categories/redis/" title="redis">redis<sup>2</sup></a></li>
+		
+			<li><a href="/categories/struts2/" title="struts2">struts2<sup>2</sup></a></li>
+		
+			<li><a href="/categories/test/" title="test">test<sup>1</sup></a></li>
+		
+			<li><a href="/categories/博客搭建/" title="博客搭建">博客搭建<sup>1</sup></a></li>
+		
+			<li><a href="/categories/博客测试/" title="博客测试">博客测试<sup>2</sup></a></li>
+		
+			<li><a href="/categories/实习/" title="实习">实习<sup>1</sup></a></li>
+		
+			<li><a href="/categories/折腾/" title="折腾">折腾<sup>4</sup></a></li>
+		
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>4</sup></a></li>
+		
+			<li><a href="/categories/未分类/" title="未分类">未分类<sup>2</sup></a></li>
+		
+			<li><a href="/categories/博客测试/未分类/" title="未分类">未分类<sup>1</sup></a></li>
+		
+			<li><a href="/categories/第三方登陆/" title="第三方登陆">第三方登陆<sup>1</sup></a></li>
+		
+			<li><a href="/categories/git/读书笔记/" title="读书笔记">读书笔记<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Java-Java进阶/" title="-Java -Java进阶">-Java -Java进阶<sup>1</sup></a></li>
+		
+			<li><a href="/tags/blog-折腾/" title="-blog -折腾">-blog -折腾<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Intellij-IDEA/" title="Intellij IDEA">Intellij IDEA<sup>4</sup></a></li>
+		
+			<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
+		
+			<li><a href="/tags/JSP/" title="JSP">JSP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java/" title="Java">Java<sup>10</sup></a></li>
+		
+			<li><a href="/tags/Java-nio/" title="Java nio">Java nio<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Rest/" title="Rest">Rest<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Servlet/" title="Servlet">Servlet<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+		
+			<li><a href="/tags/hibernate/" title="hibernate">hibernate<sup>1</sup></a></li>
+		
+			<li><a href="/tags/js/" title="js">js<sup>1</sup></a></li>
+		
+			<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/mysql/" title="mysql">mysql<sup>4</sup></a></li>
+		
+			<li><a href="/tags/mysql-triggl/" title="mysql triggl">mysql triggl<sup>1</sup></a></li>
+		
+			<li><a href="/tags/nio/" title="nio">nio<sup>1</sup></a></li>
+		
+			<li><a href="/tags/oauth/" title="oauth">oauth<sup>1</sup></a></li>
+		
+			<li><a href="/tags/redis/" title="redis">redis<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+      <li><a href="http://blogpicture.dreamleilei.com/qq_link" target="_blank" title="磊磊的QQ">QQ</a></li>
+      <li><a href="https://github.com/dreamleilei" target="_blank" title="dreajay github">github</a></li>
+      <li><a href="http://blogpicture.dreamleilei.com/weixin_link.png" target="_blank" title="磊磊的微信">微信</a></li>
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 没有礁石，就没有美丽的浪花；没有挫折，就没有壮丽的人生！ <br/>
+			再长的路，一步步也能走完，再短的路，不迈开双脚也无法到达，平凡的脚步也可以走完伟大的行程！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/dreamleilei" target="_blank" title="weibo"></a>
+		
+		
+		<a href="https://twitter.com/dreamleilei" target="_blank" title="twitter"></a>
+		
+		
+		<a href="https://github.com/dreamleilei" target="_blank" title="github"></a>
+		
+		
+		<a href="https://www.facebook.com/dreamleilei" target="_blank" title="facebook"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="pacman">pacman</a> © 2017 
+		
+		<a href="http://dreamleilei.github.io" target="_blank" title="dreamleilei">dreamleilei</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"dreamleilei123"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F77edef7e6931022edbd2322ec66456e1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+<script type="text/javascript">
+	(function($) { 
+		// When to show the scroll link
+		// higher number = scroll link appears further down the page   
+		var upperLimit = 300;
+		
+		// Our scroll link element
+		var scrollElem = $('#totop');
+	   
+		// Scroll to top speed
+		var scrollSpeed = 800;
+	   
+		// Show and hide the scroll to top link based on scroll position   
+		scrollElem.hide();
+		$(window).scroll(function () {            
+			var scrollTop = $(document).scrollTop();       
+			if ( scrollTop > upperLimit ) {
+				$(scrollElem).stop().fadeTo(300, 1); // fade back in           
+			}else{       
+				$(scrollElem).stop().fadeTo(300, 0); // fade out
+			}
+		});
+		// Scroll to top animation on click
+		$(scrollElem).click(function(){
+			$('html, body').animate({scrollTop:0}, scrollSpeed); return false;
+		});
+	})(jQuery);
+</script>
+
+
+
+  </body>
+</html>
+
