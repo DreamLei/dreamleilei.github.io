@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dreamleilei.github.io/"/>
-  <updated>2018-03-16T06:23:33.000Z</updated>
+  <updated>2018-03-16T06:07:28.000Z</updated>
   <id>http://dreamleilei.github.io/</id>
   
   <author>
@@ -14,22 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>test</title>
-    <link href="http://dreamleilei.github.io/2018/03/16/test-2/"/>
-    <id>http://dreamleilei.github.io/2018/03/16/test-2/</id>
-    <published>2018-03-16T06:23:33.000Z</published>
-    <updated>2018-03-16T06:23:33.000Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>实习心得</title>
@@ -333,46 +317,6 @@
       <category term="hexo" scheme="http://dreamleilei.github.io/tags/hexo/"/>
     
       <category term="折腾" scheme="http://dreamleilei.github.io/tags/%E6%8A%98%E8%85%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>test1</title>
-    <link href="http://dreamleilei.github.io/2016/06/21/test1/"/>
-    <id>http://dreamleilei.github.io/2016/06/21/test1/</id>
-    <published>2016-06-20T16:47:26.000Z</published>
-    <updated>2018-03-16T06:07:28.000Z</updated>
-    
-    <content type="html">&lt;p&gt;adfa&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;adfa&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>test</title>
-    <link href="http://dreamleilei.github.io/2016/06/20/test/"/>
-    <id>http://dreamleilei.github.io/2016/06/20/test/</id>
-    <published>2016-06-20T15:59:15.000Z</published>
-    <updated>2018-03-16T06:07:28.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;这是第一次用hexo写博客&quot;&gt;&lt;a href=&quot;#这是第一次用hexo写博客&quot; class=&quot;headerlink&quot; title=&quot;这是第一次用hexo写博客&quot;&gt;&lt;/a&gt;这是第一次用hexo写博客&lt;/h1&gt;&lt;h2 id=&quot;好紧张&quot;&gt;&lt;a href=&quot;#好紧张&quot; class=&quot;headerlink&quot; title=&quot;好紧张&quot;&gt;&lt;/a&gt;好紧张&lt;/h2&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;这是第一次用hexo写博客&quot;&gt;&lt;a href=&quot;#这是第一次用hexo写博客&quot; class=&quot;headerlink&quot; title=&quot;这是第一次用hexo写博客&quot;&gt;&lt;/a&gt;这是第一次用hexo写博客&lt;/h1&gt;&lt;h2 id=&quot;好紧张&quot;&gt;&lt;a href=&quot;#好紧张&quot; c
-    
-    </summary>
-    
-    
-      <category term="test" scheme="http://dreamleilei.github.io/tags/test/"/>
     
   </entry>
   
@@ -684,6 +628,402 @@
     
     
       <category term="软酷实训总结" scheme="http://dreamleilei.github.io/tags/%E8%BD%AF%E9%85%B7%E5%AE%9E%E8%AE%AD%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hibernate学习总结(一)</title>
+    <link href="http://dreamleilei.github.io/2015/08/03/hibernate-e5-ad-a6-e4-b9-a0-e6-80-bb-e7-bb-93-e4-b8-80/"/>
+    <id>http://dreamleilei.github.io/2015/08/03/hibernate-e5-ad-a6-e4-b9-a0-e6-80-bb-e7-bb-93-e4-b8-80/</id>
+    <published>2015-08-02T19:45:32.000Z</published>
+    <updated>2018-03-16T06:07:28.000Z</updated>
+    
+    <content type="html">&lt;p&gt;#&lt;br&gt;    &amp;nbsp; &amp;nbsp;最近一直在学Hibernate框架,因为比较懒,好久没有写博客了,今天强制要求自己把学过的东西总结一下.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;amp;nbsp; &amp;amp;nbsp;&amp;amp;nbsp;&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;&amp;amp;nbsp; &amp;amp;nbsp; 首先介绍一下什么是Hibernate,我认为的hibernate是一个ORM框架,是一个对象/关系映射的框架,所为对象关系映射,就是把数据库的各种关系映射成对象,然后对数据库的操作只需要对一个一个的对象操作就行,这种操作的好处是脱离了底层数据库的复杂,只需要对对象操作即可改变数据库.&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;&amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp;然后谈一下映射的方式,关系映射把数据库中的表映射成对象中的一个类,而每一条记录映射成类的一个实例,数据库的字段映射成对象的属性.&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;&amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; 安装包的下载,因为我用的是idea + maven,所以下载的时候只需要复制ibernate-core的依赖包导入即可,然后如果你用的是jdbc连接数据库,还应该导入相应的jdbc所需要的包,因为还要用到数据源,应该把所用到的数据源的包导入,例如我用的是e3p0的数据源,就依赖导入e3p0-hibernate的包.&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; 相应的包导入完成之后,接下来就需要进行hibernate.cfg.xml的配置,hibernate.cfg.xml是hibernate的默认配置文件名,相应的配置格式,你可以参照hibernate-core-XXX.Final.jar的org.hibernate包下的hibernate-configuration3.0.dtd&amp;amp;nbsp;,xml的根元素是hibernate-configuration,然后还有&amp;amp;lt;session-factory&amp;amp;gt;子元素,里面是&amp;amp;lt;property&amp;amp;nbsp;name = &amp;amp;quot;&amp;amp;quot; &amp;amp;gt; &amp;amp;lt; /property&amp;amp;gt;的配置,具体的配置不再详细的陈述,除了配置xml文件外,还可以配置相应的资源文件,即hibernate.cfg.properties文件配置,格式为属性名 值名.&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp;说完了配置文件,再谈一下如果利用配置文件创建Configuration对象,利用配置文件配置很简单,直接 &amp;amp;nbsp;Configuration conf &amp;amp;nbsp;= new Configuration().configure();后面的configure()方法的参数默认为hibernate.cfg.xml文件,你也可以手动的自己添加配置文件的路径.&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;&amp;amp;nbsp; &amp;amp;nbsp; 除了上述方法外,也可以通过new Configuration().addAnnotaedClass(Item.class).addAnnotatedClass()把所有的映射类添加进去,这种添加是默认以hibernate.properties文件为configuration的文件.也可以不配置properties文件,而是通过不停的.setProperty(&amp;amp;quot;name&amp;amp;quot;, &amp;amp;quot;value&amp;amp;#39;)来进行创建.&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; Hibernate的持久化对象有3中状态:(1)瞬态 (2)持久化状态 (3) 脱管状态.当你new一个对象的时候,对象是处于瞬态的,这个时候可以被垃圾回收.当调用session.load() 或则save() 或者get(), saveOrUpdate方法的时候,就变成持久化状态,当持久化状态调用delete方法,就成了瞬态的对象,持久化的状态通过evict,close或者clear方法就变成了托管的对象.&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; 接下来谈一下Hibernate映射,hibernate映射可以通过xml的方式或者是通过注解的方式.在这里我们谈一下通过用注解的方式.&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp;要把一个类映射成你一个table,这个时候要用到@Entity映射,然后通过@Table(name = &amp;amp;quot; &amp;amp;quot;)制定表的名称,而类中的属性就会自动的映射成数据库中的字段,但是我们往往要通过@Column(name=&amp;amp;quot; &amp;amp;quot;, length = &amp;amp;quot; &amp;amp;quot;, unique= &amp;amp;quot; &amp;amp;quot;, nullable = )等进行字段的限制.也可以通过@Check(constraints=&amp;amp;quot;&amp;amp;quot;)对整个表进行check约束. 对字段进行映射的时候可以通过@Transient设置不在数据库中生成相应的字段,也可以通过@Formlu(value= &amp;amp;quot;()&amp;amp;quot;)惊醒为字段制定赋值规则,使用此注解也不会在数据库中生成相应的字段.特殊的字段如果是enum类型的话,需要用@Enumerated进行修饰,通过(EnumeType.ORDINAL或者EnumType.STRING)进行设置显示方式,如果是数据库中存放的是大数据例如图片,可以用@Lob注解修饰,用@Basic注解辅助修饰时间类型的话用@Temporal()设置数据库中存储的时间类型.&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; 谈完了单个表和字段的映射,再谈一下如何映射主键,一般主键用@Id注解修饰,然后通过GeneratedValue()设置主键的值,GeneratedValue的值可以有GenerationType.*指定,也可以通过自定义的主键生成器指定.&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; 如果一张表中的属性是一个集合,那应该怎么映射呢,那就应该通过外键,重新创建一张新表,通过@ElementCollection(targetClass=) @CollectionTable(name = &amp;amp;quot; &amp;amp;quot;, joinColumns={@JoinColumn(name = &amp;amp;quot; &amp;amp;quot;, referenceColumn=&amp;amp;quot; &amp;amp;#39; ... ) })映射,&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp; &amp;amp;nbsp; 如果集合的数据类型是组件,只需要组件的类用@Embeddable修饰即可,其它的都是一样的.&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;如果是List,需要指定@OrderColumn(name = &amp;amp;quot;&amp;amp;quot; )如果是Set不用指定,如果是Map,需要指定@MapKeyClass和@MapKeyColumn().&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;nbsp; &amp;amp;nbsp;如果表中的某个属性是组件怎么呢,所为的组件就是不被持久化的类,这个时候需要在组件的类注解@Embeddable,然后增加@Parent注解.或者在持久化类中用@Embedded &amp;amp;nbsp;@AttributeOverrides(@AttributeOverride(name = &amp;amp;quot; &amp;amp;quot;, column=@Column()),..);进行注解修饰.&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp; &amp;amp;nbsp;如果组件的属性中有集合的话,就和非组件的集合属性的修饰是一样的.&amp;lt;/span&amp;gt;
+
+&amp;amp;nbsp;
+
+&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;lt;/span&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#&lt;br&gt;    &amp;nbsp; &amp;nbsp;最近一直在学Hibernate框架,因为比较懒,好久没有写博客了,今天强制要求自己把学过的东西总结一下.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;amp;nbsp; &amp;amp;nbsp;&amp;amp;nbsp;&amp;lt;span style=&amp;
+    
+    </summary>
+    
+      <category term="hibernate" scheme="http://dreamleilei.github.io/categories/hibernate/"/>
+    
+    
+      <category term="hibernate" scheme="http://dreamleilei.github.io/tags/hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>struts2 学习总结</title>
+    <link href="http://dreamleilei.github.io/2015/07/26/struts2-e5-ad-a6-e4-b9-a0-e6-80-bb-e7-bb-93/"/>
+    <id>http://dreamleilei.github.io/2015/07/26/struts2-e5-ad-a6-e4-b9-a0-e6-80-bb-e7-bb-93/</id>
+    <published>2015-07-26T07:35:01.000Z</published>
+    <updated>2018-03-16T06:07:28.000Z</updated>
+    
+    <content type="html">&lt;p&gt;#&lt;br&gt;    从昨天开始看李刚的&amp;lt;&amp;lt;轻量级JavaEE&amp;gt;&amp;gt;的深入使用struts2,到现在感觉学的东西有点多,有点乱,有点杂,于是静下心来,整理一下.&lt;/p&gt;
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size:20px;&quot;&gt;&amp;nbsp;&amp;nbsp; 深入使用struts2,我看了struts2的类型转换,字段的校验,文件的上传,文件的下载.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &amp;nbsp;&lt;br&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;首先谈一下类型的转换,在此之前我想先说一下Action类中的属性,action类中的每一个属性都会对应着web应用的值,当你请求action的时候,然后转发到某个视图资源,通过&amp;amp;lt;s:debug /&amp;amp;gt;标签,你会看到,你的action中的每个属性都会存到valueStack中.那么问题就来了,这就牵扯到了类型的转换,valueStack中的对象都是Object类型的所以都要进行类型转换.struts2已经内建了int,double,float,bool,char.boolean以及它们的包装类和Date类型的参数.其余的复合类型就需要自己定义了.&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;line-height: 32px;&amp;quot;&amp;gt;假如有一个Action类中定义一个名为user的对象,为User类型,而User类型有name和password两个属性,假如前台给你传过来的对象是一个字符串:user=leilei:helloworld这个时候 你就需要自己定义类型转换器,从字符串中解析出想要的东西,生成相应的User类型的对象.再比如前台跟你传过来的是user.name=&amp;amp;quot;&amp;amp;quot;和use.password=&amp;amp;quot;&amp;amp;#39;这种格式,这是给你传过来的一个user对象,如果你要给别的地方传一个String类型的对象,这个时候你也要进行类型转换,转换成String对象.&amp;amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;自定义的类型转换器,要求实现DefaultTypeConverter类后重写其中的convertvalue方法或者实现StrutsTypeConverter类重写ConvertToString(Map content, Object value) 和convertFromString(Map content, String [] value, Class toType)方法.&amp;lt;/span&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;类型转换器定义好之后,还需要注册类型转换器,注册类型转换器有局部和全局两种.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;局部类型转换器:局部类型转换器要写在资源文件里,资源文件的命名规则是ActionName-conversion.properties,文件内容的格式为:对象名=相应的转换类的名字.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;全局类型转换器:在xwork-conversion.properties(此文件在class类的加载路径下),文件内容的格式和局部的内容格式是相同的.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;如果在Action中用到了集合类,而集合类的泛型没有明确指出,则需要在相应的Action-conversion.properties中配置,List类型的参数格式为Element_类型名=相应的类型定义类&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;Map类型的参数格式为Key_&amp;lt;MapPropName&amp;gt;=&amp;lt;key&lt;em&gt;type&amp;gt; Element&lt;/em&gt;&amp;lt;MapPropName&amp;gt;=&amp;lt;key_type&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &amp;nbsp;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;如果在类型转换中出现类型转换错误,则会返回一个input字符串,进入input的视图,在input视图中可以通过&amp;lt;s:filederror /&amp;gt;打印出错误信息,如果想更改这个信息的格式可以在资源文件中设置xwork.default.invalid.fieldvalue值.如果想对某一字段转换失败的错误消息作出更改,可在相应的Action的资源文件中配置invalid.fieldvalue.&amp;lt;propName&amp;gt;=&amp;lt;tipMsg&amp;gt;.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &amp;nbsp;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;接下来谈一下字段校验,字段校验是指某个字段必须满足某些条件,否则就要转发到input视图,编写校验规则一般要通过配置相应的xml文件实现,文件名为Action名-validation.xml名,validation的格式书写可以分为字段式的校验和非字段式的校验,字段式的校验格式:&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;lt;valiators&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp; &amp;nbsp;&amp;lt;fieldName=&amp;quot;name&amp;quot; &amp;gt;(可以有多个)&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;lt;fileld-validator type=&amp;quot;type&amp;quot;&amp;gt;(可以有多个)&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;lt;param name=&amp;quot;条件&amp;#39;&amp;gt;条件&amp;lt;/param&amp;gt;(可以有多个)&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;lt;message key=&amp;quot;国际化提示消息&amp;quot;&amp;gt;如果校验错误,就输出这个信息&amp;lt;/message&amp;gt;(这个是必须的)&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;lt;/field-validator&amp;gt;&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;lt;field-validator type=&amp;quot;&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp; ………..&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;lt;/field-validator&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;lt;/fieldName&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;lt;/valiators&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &amp;nbsp;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;客户端校验:在&amp;lt;s:form中设置 validate=&amp;quot;true&amp;quot; &amp;gt;但是这样之后这个界面不能直接访问,否则会报错,必须通过其它的界面进行转发.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &amp;nbsp;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;除了字段校验风格的校验器还有非字段校验风格的校验器.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;lt;validators&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;lt;validator&amp;nbsp;type=&amp;quot;&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;lt;param name=&amp;quot;filelName&amp;quot;&amp;gt;字段的名字&amp;lt;/param&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;lt;param name=&amp;quot;参数名&amp;quot;&amp;gt;参数值&amp;lt;/param&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp; &amp;nbsp;…&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;lt;message key=&amp;quot;国际化消息&amp;quot;&amp;gt;..&amp;lt;/message&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;lt;/validator-type&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &amp;nbsp;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;短路校验:是指对于一个字段如果有多个校验条件,第一个校验规则不满足的时候会输出消息,阻止后面的校验输出消息.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;设置格式是:在&amp;lt;filed-name short-circuit=&amp;quot;true&amp;quot; &amp;gt; 和&amp;lt;validator short-circuit=&amp;quot;true&amp;quot; &amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;校验文件的搜索规则:&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;lt;SuperActonName&amp;gt;-validation.xml&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;lt;SuperActionName&amp;gt;-&amp;lt;MethodName&amp;gt;-validation.xml&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;lt;ActionName&amp;gt;-validation.xml&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;lt;ActionName&amp;gt;-&amp;lt;methodName&amp;gt;-validation.xml&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;规则是:从上往下搜索,但是下面的会覆盖上面的,所有的xml文件都加载.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;除了以上配置xml校验外,还有基于注解的校验,和手动完成输入校验.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;手动完成的输入校验,需要重写Action中的validate方法,或者重写validateXxx方法.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &amp;nbsp;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;输入校验的步骤:&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;(1)类型转换器对字符串进行解析,将字符串解析成相应的对象形式&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;(2)如果在解析过程中出现异常,conversionError拦截器将错误信息封装到FieldError里,然后执行第3步,;如果没有错误,直接执行第3步.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;(3)使用struts2配置的校验器进行输入校验&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;(4)通过反射调用validteXxx方法&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;a href=&quot;http://www.dreamleilei.com/wordpress/wp-content/uploads/2015/07/2015-07-26-231115-的截屏.png&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://www.dreamleilei.com/wordpress/wp-content/uploads/2015/07/2015-07-26-231115-的截屏-300x82.png&quot; alt=&quot;2015-07-26 23:11:15 的截屏&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;(6)如果以上都没有出现fieldError,调用Action里处理用户请求的方法,如果有fieldError,系统将转入input视图资源.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &amp;nbsp;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;利用struts2实现文件的上传&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;在strust包中,org.apache.struts.default.properties中有这样几行:你会发现这样一行&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;struts.multipart.parser=jakarta&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;说明struts2的解析器是用到jakarta&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;然后你需要额外引入common-io-2.2.jar和commons-fieldupload-1.3.1.jar&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &amp;nbsp;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;文件上传中用到struts标签库中的一个标签&amp;lt;s:file &amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;然后需要配置相应的action:&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;需要额外配置三个参数:&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;File xxx;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;String xxxContentType;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;String xxxFileName;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;这三个参数由上传的File给指定,xxx代表这File的name,然后在action中配置好存储路径,实现好文件的复制即可.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &amp;nbsp;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;实现文件下载:&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;配置Action:需要一个方法返回类型为InputStream 方法名为getXxxx(),然后实现下载只需要配置相应的action即可.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;lt;action&amp;gt;的配置:&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;lt;result type=&amp;quot;stream&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;lt;param name =&amp;quot;inputName&amp;#39; &amp;gt;xxxx(和上面的返回的InputStream的方法名相对应)&amp;lt;/param&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;lt;param name=&amp;quot;contentType&amp;quot;&amp;gt;&amp;lt;/param&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;lt;param name=&amp;quot;contentDisposition&amp;quot; /&amp;gt;下载的文件名&amp;lt;/param&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;&amp;lt;param name=&amp;quot;bufferSize&amp;quot;&amp;gt;下载缓冲区大小&amp;lt;/param&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &amp;nbsp;&lt;br&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;br&gt;    &amp;nbsp;&lt;br&gt;&lt;/div&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#&lt;br&gt;    从昨天开始看李刚的&amp;lt;&amp;lt;轻量级JavaEE&amp;gt;&amp;gt;的深入使用struts2,到现在感觉学的东西有点多,有点乱,有点杂,于是静下心来,整理一下.&lt;/p&gt;
+&lt;div&gt;&lt;br&gt;    &lt;span style=&quot;font-size:20px;&quot;&gt;
+    
+    </summary>
+    
+      <category term="struts2" scheme="http://dreamleilei.github.io/categories/struts2/"/>
+    
+    
+      <category term="strus2" scheme="http://dreamleilei.github.io/tags/strus2/"/>
+    
+      <category term="学习总结" scheme="http://dreamleilei.github.io/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JSP复习</title>
+    <link href="http://dreamleilei.github.io/2015/07/24/jsp-e5-a4-8d-e4-b9-a0/"/>
+    <id>http://dreamleilei.github.io/2015/07/24/jsp-e5-a4-8d-e4-b9-a0/</id>
+    <published>2015-07-24T08:14:22.000Z</published>
+    <updated>2018-03-16T06:07:28.000Z</updated>
+    
+    <content type="html">&lt;p&gt;#&lt;br&gt;    &lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;&amp;nbsp;复习了JSP 的一些基础的东西,总结一下.&lt;/span&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;amp;nbsp;
+
+&amp;lt;span style=&amp;quot;font-family:arial,helvetica,sans-serif;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;首先jsp是一门后台语言,但是在web开发中,如果用jsp+servlet+javaBean开发的话,jsp作为mvc中的view层,主要用来表现的.&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-family:arial,helvetica,sans-serif;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;jsp的工作原理,其实jsp的本质就是servlet,当用户第一次访问一个jsp页面的时候,web容器把jsp页面编译成相应的servlet进行响应.&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;jsp的四种基本语法:&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(1)jsp注释&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(2)jsp表达式的输出&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(3)jsp声明&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(4)jsp脚本&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(1)jsp注释:&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;注释的格式&amp;amp;lt;%-- --%&amp;amp;gt; html的注释格式&amp;amp;lt;!-- --&amp;amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(2)jsp表达式的输出&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;lt;%=表达式%&amp;amp;gt;(注意后面没有分号);&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(3)jsp声明&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;lt;%!&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;%&amp;amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;nbsp;在此声明,多次请求一个jsp只会初始化一次声明.&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(4)jsp脚本&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;lt;% 脚本 %&amp;amp;gt;凡是在&amp;amp;lt;% %&amp;amp;gt;中的内容都是jsp脚本的内容,可以在jsp脚本中插入html代码&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;jsp的三个编译指令&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(1)page指令 &amp;amp;lt;%@ page .... %&amp;amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;这是对整个页面的一个描述后面可以加language=&amp;amp;quot;&amp;amp;quot; , charset=&amp;amp;quot;&amp;amp;quot;, contenttype=&amp;amp;quot;&amp;amp;quot;, import=&amp;amp;quot;&amp;amp;quot;, isErrorPage=&amp;amp;quot;&amp;amp;quot;, isElIgnored=&amp;amp;quot;&amp;amp;quot;, extends=&amp;amp;quot;&amp;amp;quot;.&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(2)taglib指令&amp;amp;lt;%@ taglib uri=&amp;amp;quot;&amp;amp;quot; prefix=&amp;amp;quot;&amp;amp;quot;%&amp;amp;gt;(后面提到的两个属性都是必需的)&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(3)include指令&amp;amp;lt;%@ include file=&amp;amp;quot;&amp;amp;quot;(必需的,且只有一个) %&amp;amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;JSP的七个指令动作:&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(1)jsp:forward 转发&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;里面只有一个page属性且是必需的.转发的时候相应的url是不变的,可以通过&amp;amp;lt;jsp:param name=&amp;amp;quot;&amp;amp;quot; value=&amp;amp;quot;&amp;amp;quot; &amp;amp;gt;传入参数,且转发的时候之前的请求属性等等是不会丢失的.&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(2)jsp:include 用于动态引入一个JSP页面&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;也可以通过&amp;amp;lt;jsp:param&amp;amp;gt;设置参数&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;lt;page=&amp;amp;quot;&amp;amp;quot;该属性是必需的&amp;amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;lt;autoflash=&amp;amp;quot;&amp;amp;quot;&amp;amp;gt;设置是否自动刷新&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(3)jsp:param 初始化参数&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;一般和jsp:forward和jsp:include混合使用&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(4)jsp:plugin&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(5)jsp:useBean 引入JavaBean实例&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;&amp;amp;lt;jsp:useBean id=&amp;amp;quot;&amp;amp;quot;(必需的)&amp;amp;nbsp;class=&amp;amp;quot;&amp;amp;#39; beanName=&amp;amp;quot;&amp;amp;quot; scope=&amp;amp;quot;&amp;amp;quot;(可选属性application,page,request,session)&amp;lt;/span&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(6)jsp:setProperty 设置javaBean实例中的属性&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;lt;jsp:setProerty property = &amp;amp;quot;&amp;amp;quot;(必需的) name=&amp;amp;quot;&amp;amp;quot;(必需的) &amp;amp;nbsp;value=&amp;amp;quot;&amp;amp;quot;&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(7)jsp:getProperty 获取javaBean实例中的属性&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;&amp;amp;lt;jsp:getProperty property =&amp;amp;quot;&amp;amp;quot; name=&amp;amp;quot;&amp;amp;quot;&amp;amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;jsp的9个内置对象.&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(1)request&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;对应于Servlet中HttpRequest对象,&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(2)response&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;对应于Servlet中HttpResponse对象&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(3)session&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;对应与Servlet中HttpSession对象&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(4)page&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;对应于pageContext实例.&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(5)config&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;对应于ServletConfig对象&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(6)application&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;ServletContext实例&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;对应于整个web应用&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(7)out&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(8)exception&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(9)pageContext&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;对应于ServletContext对象.&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;amp;nbsp;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;JSP的生命周期:&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(1)解析阶段:Servlet容器解析jsp代码,如果有错误,就返回错误.&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(2)翻译阶段:将JSP代码翻译成Servlet代码&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(3)编译阶段:Servlet容器编译相应的Servlet源文件,生成Servlet类&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(4)初始化阶段:&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(5)运行阶段&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+
+&amp;lt;font face=&amp;quot;arial, helvetica, sans-serif&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-size: 20px; line-height: 32px;&amp;quot;&amp;gt;(6)销毁阶段&amp;lt;/span&amp;gt;&amp;lt;/font&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#&lt;br&gt;    &lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;&amp;nbsp;复习了JSP 的一些基础的东西,总结一下.&lt;/span&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;amp;nbsp;
+
+&amp;lt;span sty
+    
+    </summary>
+    
+      <category term="Java复习" scheme="http://dreamleilei.github.io/categories/Java%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="Java" scheme="http://dreamleilei.github.io/tags/Java/"/>
+    
+      <category term="JSP" scheme="http://dreamleilei.github.io/tags/JSP/"/>
     
   </entry>
   
