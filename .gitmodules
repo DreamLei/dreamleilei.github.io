@@ -1,3 +1,6 @@
 [submodule "themes/dream"]
 	path = themes/dream
 	url = git@github.com:dreamleilei/hexo-theme-dream.git
+[submodule "themes/hexo-theme-next"]
+	path = themes/hexo-theme-next
+	url = https://github.com/dreamleilei/hexo-theme-next.git
