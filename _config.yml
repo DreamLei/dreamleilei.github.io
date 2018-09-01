@@ -71,4 +71,6 @@ deploy:
   type: git
   repo: git@github.com:dreamleilei/dreamleilei.github.io.git
   branch: master
+  name: dreamleilei
+  email: dreamleilei123@gmail.com
 
