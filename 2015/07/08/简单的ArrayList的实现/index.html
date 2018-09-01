@@ -1,0 +1,827 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="磊磊的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="[code lang=”java”]import java.util.ArrayList;import java.util.Arrays;import java.util.Collection;
+/**
+
+Created by lei on 15-7-8.*/public class MyArrayList&amp;lt;E&amp;gt; { private Object[] element;
+ @Overri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单的ArrayList的实现">
+<meta property="og:url" content="http://dreamleilei.github.io/2015/07/08/简单的ArrayList的实现/index.html">
+<meta property="og:site_name" content="磊磊的博客">
+<meta property="og:description" content="[code lang=”java”]import java.util.ArrayList;import java.util.Arrays;import java.util.Collection;
+/**
+
+Created by lei on 15-7-8.*/public class MyArrayList&amp;lt;E&amp;gt; { private Object[] element;
+ @Overri">
+<meta property="og:updated_time" content="2018-09-01T00:59:42.203Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简单的ArrayList的实现">
+<meta name="twitter:description" content="[code lang=”java”]import java.util.ArrayList;import java.util.Arrays;import java.util.Collection;
+/**
+
+Created by lei on 15-7-8.*/public class MyArrayList&amp;lt;E&amp;gt; { private Object[] element;
+ @Overri">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://dreamleilei.github.io/2015/07/08/简单的ArrayList的实现/"/>
+
+  <title> 简单的ArrayList的实现 | 磊磊的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">磊磊的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                简单的ArrayList的实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-07-08T05:11:07+08:00" content="2015-07-08">
+              2015-07-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java复习/" itemprop="url" rel="index">
+                    <span itemprop="name">Java复习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[code lang=”java”]<br>import java.util.ArrayList;<br>import java.util.Arrays;<br>import java.util.Collection;</p>
+<p>/**</p>
+<ul>
+<li><p>Created by lei on 15-7-8.<br>*/<br>public class MyArrayList&lt;E&gt; {<br> private Object[] element;</p>
+<p> @Override<br> public String toString() {</p>
+<pre><code>StringBuilder toString= new StringBuilder(&amp;quot;&amp;quot;);
+for (int i = 0; i &amp;lt; size; i++) {
+    toString.append(i + &amp;quot;: &amp;quot; + element[i] + &amp;quot; &amp;quot;);
+}
+return toString.toString();
+</code></pre><p> }</p>
+<p> private static final int defaultCapacity = 10;<br> private int size = 0;<br> private int capacity;</p>
+<p> public MyArrayList() {</p>
+<pre><code>element = new Object[defaultCapacity];
+this.capacity = defaultCapacity;
+</code></pre><p> }</p>
+<p> public MyArrayList(int capacity) {</p>
+<pre><code>if (capacity &amp;lt; 0) {
+    throw new IllegalArgumentException(&amp;quot;hello&amp;quot;);
+}
+element = new Object[capacity];
+this.capacity = capacity;
+</code></pre><p> }</p>
+<p> public MyArrayList(Collection&lt;? extends E&gt; c) {</p>
+<pre><code>element = c.toArray();
+size = element.length;
+System.out.println(element.getClass());
+System.out.println(Object[].class);
+if (element.getClass() != Object[].class) {
+    Arrays.copyOf(element, element.length, Object[].class);
+}
+</code></pre><p> }</p>
+<p> public void add(E e) {</p>
+<pre><code>ensureCapacity(size);
+element[size++] = e;
+</code></pre><p> }</p>
+<p> public void add(int index, E e) {</p>
+<pre><code>rangeCheck(index);
+ensureCapacity(size + 1);
+int num = size - index;
+System.arraycopy(element, index, element, index + 1, num);
+element[index] = e;
+size++;
+</code></pre><p> }</p>
+<p> public boolean addAll(int index, Collection&lt;? extends E&gt; e) {</p>
+<pre><code>rangeCheck(index);
+Object[] temp = e.toArray();
+
+int num = size - index + temp.length;
+ensureCapacity(size + temp.length);
+System.arraycopy(element, index , element, index + temp.length , size - index );
+
+System.arraycopy(temp, 0, element, index, temp.length);
+this.size += temp.length;
+return temp.length != 0;
+</code></pre><p> }</p>
+<p> public boolean addAll(Collection&lt;? extends E&gt; e) {</p>
+<pre><code>Object[]  temp = e.toArray();
+
+ensureCapacity(size + temp.length);
+System.arraycopy(temp, 0, element, size, temp.length);
+this.size += temp.length;
+return temp.length != 0;
+</code></pre><p> }</p>
+<p> @SuppressWarnings(&quot;unchecked&quot;)<br> public E element(int index) {</p>
+<pre><code>rangeCheck(index);
+Object oldData = element[index];
+return (E) oldData;
+</code></pre><p> }</p>
+<p> public E remove(int index) {</p>
+<pre><code>rangeCheck(index);
+
+E oldData = element(index);
+System.arraycopy(element, index + 1, element, index, size - index - 1);
+element[--size] = null;
+return oldData;
+</code></pre><p> }</p>
+<p> public E remove() {</p>
+<pre><code>E removeData;
+removeData = remove(size - 1);
+return removeData;
+</code></pre><p> }</p>
+<p> @SuppressWarnings(&quot;unchecked&quot;)<br> public E get(int index) {</p>
+<pre><code>rangeCheck(index);
+return element(index);
+</code></pre><p> }</p>
+<p> public boolean remove(Object o) {</p>
+<pre><code>if (o == null) {
+    for (int i = 0; i &amp;lt; size; i++) {
+        if (element[i] == null) {
+            fastRemove(i);
+            return true;
+        }
+    }
+} else {
+    for (int i = 0; i &amp;lt; size; i++) {
+        if(element[i].equals(o)){
+            fastRemove(i);
+            return true;
+        }
+    }
+}
+return false;
+</code></pre><p> }</p>
+<p> public int size(){</p>
+<pre><code>return this.size;
+</code></pre><p> }</p>
+<p> public int indexOf(Object o){</p>
+<pre><code>if(o == null){
+    for (int index = 0; index &amp;lt; size; index++) {
+        if(element[index]==null)
+            return index;
+    }
+} else {
+    for (int index = 0; index &amp;lt; size; index++) {
+        if (element[index].equals(o)) {
+            return index;
+        }
+    }
+}
+return -1;
+</code></pre><p> }</p>
+<p> public boolean contains(Object o){</p>
+<pre><code>return indexOf(o) &amp;gt; -1;
+</code></pre><p> }</p>
+<p> public boolean isEmpty(){</p>
+<pre><code>return size == 0;
+</code></pre><p> }</p>
+<p> public E set(int index, E e){</p>
+<pre><code>rangeCheck(index);
+
+E oldData = element(index);
+element[index] = e;
+return oldData;
+</code></pre><p> }</p>
+<p> public void clear(){</p>
+<pre><code>for (int i = 0; i &amp;lt; size; i++) {
+    element[i] = null;
+}
+this.size = 0;
+</code></pre><p> }</p>
+<p> protected void removeRange(int fromIndex, int toIndex) {</p>
+<pre><code>rangeCheck(fromIndex);
+rangeCheck(toIndex);
+
+int numMove = size - toIndex ;
+if(numMove &amp;gt; 0) {
+    System.arraycopy(element, toIndex, element, fromIndex, numMove);
+}
+
+int newSize = size - (toIndex - fromIndex);
+
+for (int i = newSize; i &amp;lt; size; i++) {
+    element[i] = null;
+}
+
+this.size = newSize;
+</code></pre><p> }</p>
+<p> private void fastRemove(int index) {</p>
+<pre><code>System.arraycopy(element, index + 1, element, index, size - index - 1);
+element[--size] = null;
+</code></pre><p> }</p>
+<p> private void rangeCheck(int range) {</p>
+<pre><code>if (range &amp;lt; 0 || range &amp;gt; size - 1) {
+    throw new ArrayIndexOutOfBoundsException(range);
+}
+</code></pre><p> }</p>
+<p> public Object[] toArray(){</p>
+<pre><code>return Arrays.copyOf(element, size);
+</code></pre><p> }</p>
+<p> private void ensureCapacity(int capacity) {</p>
+<pre><code>if (capacity &amp;gt;= this.capacity) {
+    this.capacity = (this.capacity * 3) / 2  +1;
+    if (this.capacity &amp;lt;= capacity) {
+        this.capacity = capacity;
+    }
+    element = Arrays.copyOf(element, this.capacity);
+}
+</code></pre><p> }</p>
+<p> public static void main(String[] args) {</p>
+<pre><code>MyArrayList&amp;lt;String&amp;gt; myList = new MyArrayList&amp;lt;String&amp;gt;();
+
+for (int i = 0; i &amp;lt; 10; i++) {
+    myList.add(&amp;quot;hello world&amp;quot;);
+}
+
+ArrayList&amp;lt;String&amp;gt; addList = new ArrayList&amp;lt;String&amp;gt;(10);
+addList.add(&amp;quot;hello&amp;quot;);
+addList.add(&amp;quot;leilei&amp;quot;);
+addList.add(&amp;quot;leilei2&amp;quot;);
+myList.addAll(addList);
+System.out.println(addList);
+System.out.println(myList);
+System.out.println(myList.indexOf(&amp;quot;leilei&amp;quot;));
+System.out.println(myList.contains(&amp;quot;sf&amp;quot;));
+System.out.println(myList.remove(&amp;quot;leilei&amp;quot;));
+System.out.println(myList);
+System.out.println(myList.indexOf(&amp;quot;leilei&amp;quot;));
+myList.addAll(8, addList);
+System.out.println(myList);
+</code></pre><p> }</p>
+</li>
+</ul>
+<p>}<br>[/code]</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/19/idea-maven-struts2/" rel="next" title="Idea + maven + struts2">
+                <i class="fa fa-chevron-left"></i> Idea + maven + struts2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/15/linux-e4-b8-8bjava-e7-9a-84jni-e6-8a-80-e6-9c-af-e5-85-a5-e9-97-a8/" rel="prev" title="Linux下java的JNI技术(入门)">
+                Linux下java的JNI技术(入门) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="dreamleilei" />
+          <p class="site-author-name" itemprop="name">dreamleilei</p>
+          <p class="site-description motion-element" itemprop="description">for my dream</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dreamleilei</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

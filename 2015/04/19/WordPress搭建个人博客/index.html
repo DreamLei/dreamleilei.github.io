@@ -1,0 +1,652 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="博客," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="磊磊的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="#    刚刚用wordpress成功的搭建了自己的个人博客主页,分享一下
+&amp;lt;span style=&amp;quot;font-size:18px;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-family:arial,helvetica,sans-serif;&amp;quot;&amp;gt;条件:虚拟主机+域名&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;
+
+&amp;lt;span">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPress搭建个人博客">
+<meta property="og:url" content="http://dreamleilei.github.io/2015/04/19/WordPress搭建个人博客/index.html">
+<meta property="og:site_name" content="磊磊的博客">
+<meta property="og:description" content="#    刚刚用wordpress成功的搭建了自己的个人博客主页,分享一下
+&amp;lt;span style=&amp;quot;font-size:18px;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-family:arial,helvetica,sans-serif;&amp;quot;&amp;gt;条件:虚拟主机+域名&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;
+
+&amp;lt;span">
+<meta property="og:updated_time" content="2018-09-01T00:59:42.210Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WordPress搭建个人博客">
+<meta name="twitter:description" content="#    刚刚用wordpress成功的搭建了自己的个人博客主页,分享一下
+&amp;lt;span style=&amp;quot;font-size:18px;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;font-family:arial,helvetica,sans-serif;&amp;quot;&amp;gt;条件:虚拟主机+域名&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;
+
+&amp;lt;span">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://dreamleilei.github.io/2015/04/19/WordPress搭建个人博客/"/>
+
+  <title> WordPress搭建个人博客 | 磊磊的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">磊磊的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                WordPress搭建个人博客
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-04-19T15:05:39+08:00" content="2015-04-19">
+              2015-04-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/博客搭建/" itemprop="url" rel="index">
+                    <span itemprop="name">博客搭建</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#<br>    <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">刚刚用wordpress成功的搭建了自己的个人博客主页,分享一下</span></span></p>
+<pre><code>&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;条件:虚拟主机+域名&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;首先你要有一个独立的空间,比如你可以申请万网的虚拟主机或者申请一个虚拟的云服务器之类的,总之你需要有一个空间放wodrpess,本人使用的万网提供的虚拟主机,小伙伴们如果也想要申请一下的话可以登录到_**http://www.net.cn/hosting/free/**_&amp;nbsp;来申请自己的个人虚拟空间(不过每个人申请一个免费的,而且期限只有一年),申请的过程也不是太繁琐,就是需要各种拍照,各种认证.&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;申请到虚拟主机之后登录到万网查看自己的主机信息,大约如下&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;[![test](http://leilei.lezifang.cn/wordpress/wp-content/uploads/2015/04/test-300x109.png)](http://leilei.lezifang.cn/wordpress/wp-content/uploads/2015/04/test.png)&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;以后你就可以通过ftp登陆到相应的站点管理自己的空间了,有了这个之后,你去网上下载一个wordpress的压缩包,用ftp 上传到你的htdocs目录下,然后在万网登录自己的空间,解压一下,然后安装wordpress(网上教程和博文好多,此处不再重复),记得我当时遇到的问题是数据库的登录地址,不要填localhost要填万网提供的那个域名.&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;安装完成后,你需要将自己的域名解析到自己的虚拟主机的ip,你可以在dns.la网站上设置免费的域名解析服务,我在这里不再啰嗦.&lt;/span&gt;&lt;/span&gt;
+</code></pre><p>##<br>    <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">分享一下安装完wordpress后做的几件事:</span></span></p>
+<pre><code>&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;首先安装主题,主题有好多,你可以根据自己的喜好选择你所喜欢的主题.&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;然后安装一些必要的插件.&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;然后完善一下自己的资料啥的.&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;我安装的插件:&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;FCEditor 一款不错的文本编辑插件,让你的编辑更加得心应手.&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;wp-player 为了让自己得博客更加炫酷,可以实现博客中添加音乐的功能,具体的安装操作网上也有比较详细的教程.&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;simple local avatars 这个插件可以让你上传自己的头像.&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;为了让自己得首页更加的多彩,我还条件了新浪微博的挂件,和虾米音乐.&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;新浪微博的挂件安装方法:http://app.weibo.com/tool/weiboshow在新浪微博的小工具里找到微博秀,然后他会给你提供HTML的代码,在wordpress的自定义,小工具里添加文本然后粘贴相应的HTML代码,即可实现新浪微博的挂件功能.&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:18px;&quot;&gt;&lt;span style=&quot;font-family:arial,helvetica,sans-serif;&quot;&gt;虾米音乐的实现方法:登录虾米音乐的官方网站,然后搜索到o歌曲后点击more选择ai转帖到其它网站g同样也会得到一段HTML代码,根据以上类似的方法就可以实现首页的音乐播放器.&lt;/span&gt;&lt;/span&gt;
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/博客/" rel="tag">#博客</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/17/Linux下 Intellij idea + github/" rel="next" title="Linux下 Intellij idea + github">
+                <i class="fa fa-chevron-left"></i> Linux下 Intellij idea + github
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/21/js中正则匹配/" rel="prev" title="js中正则匹配">
+                js中正则匹配 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="dreamleilei" />
+          <p class="site-author-name" itemprop="name">dreamleilei</p>
+          <p class="site-description motion-element" itemprop="description">for my dream</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dreamleilei</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
