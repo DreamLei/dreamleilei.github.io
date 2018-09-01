@@ -1,0 +1,642 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="vpn,代理," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="磊磊的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="之前理解的VPN是为了实现连接到某个局域网内而使用的技术，而代理是为了蕃蔷用的，后来 经过查找资料还是发现自己的理解还是太片面不够全面。
+VPNVPN的简单介绍首先看一下VPN的维基百科:
+VPN : Virtual Private Network，是私人网络的通信方法。之前可以通过VPN进行蕃蔷
+构建VPN的几种方式的比较常见的VPN链有pptp,l2tp,openvpn具体的介绍可以参见以下链">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代理和vpn的区别">
+<meta property="og:url" content="http://dreamleilei.github.io/2016/06/25/代理和vpn的区别/index.html">
+<meta property="og:site_name" content="磊磊的博客">
+<meta property="og:description" content="之前理解的VPN是为了实现连接到某个局域网内而使用的技术，而代理是为了蕃蔷用的，后来 经过查找资料还是发现自己的理解还是太片面不够全面。
+VPNVPN的简单介绍首先看一下VPN的维基百科:
+VPN : Virtual Private Network，是私人网络的通信方法。之前可以通过VPN进行蕃蔷
+构建VPN的几种方式的比较常见的VPN链有pptp,l2tp,openvpn具体的介绍可以参见以下链">
+<meta property="og:image" content="http://blogpicture.dreamleilei.com/blog-vpn-wiki.png">
+<meta property="og:updated_time" content="2018-09-01T00:59:42.210Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="代理和vpn的区别">
+<meta name="twitter:description" content="之前理解的VPN是为了实现连接到某个局域网内而使用的技术，而代理是为了蕃蔷用的，后来 经过查找资料还是发现自己的理解还是太片面不够全面。
+VPNVPN的简单介绍首先看一下VPN的维基百科:
+VPN : Virtual Private Network，是私人网络的通信方法。之前可以通过VPN进行蕃蔷
+构建VPN的几种方式的比较常见的VPN链有pptp,l2tp,openvpn具体的介绍可以参见以下链">
+<meta name="twitter:image" content="http://blogpicture.dreamleilei.com/blog-vpn-wiki.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://dreamleilei.github.io/2016/06/25/代理和vpn的区别/"/>
+
+  <title> 代理和vpn的区别 | 磊磊的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">磊磊的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                代理和vpn的区别
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-25T20:54:12+08:00" content="2016-06-25">
+              2016-06-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/折腾/" itemprop="url" rel="index">
+                    <span itemprop="name">折腾</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前理解的VPN是为了实现连接到某个局域网内而使用的技术，而代理是为了蕃蔷<br>用的，后来 经过查找资料还是发现自己的理解还是太片面不够全面。</p>
+<h2 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h2><h3 id="VPN的简单介绍"><a href="#VPN的简单介绍" class="headerlink" title="VPN的简单介绍"></a>VPN的简单介绍</h3><p>首先看一下<strong>VPN</strong>的维基百科:<br><img src="http://blogpicture.dreamleilei.com/blog-vpn-wiki.png" alt="VPN"></p>
+<p>VPN : <em>Virtual Private Network</em>，是私人网络的通信方法。之前可以通过VPN进行蕃蔷</p>
+<p>构建VPN的几种方式的比较<br>常见的VPN链有pptp,l2tp,openvpn<br>具体的介绍可以参见以下链接:</p>
+<blockquote>
+<p><a href="http://www.gxbay.com/1559.html" target="_blank" rel="external">http://www.gxbay.com/1559.html</a></p>
+</blockquote>
+<h3 id="VPN的蕃蔷原理"><a href="#VPN的蕃蔷原理" class="headerlink" title="VPN的蕃蔷原理"></a>VPN的蕃蔷原理</h3><p> &nbsp;&nbsp; 用VPN 通常需要先安装客户端软件。当你运行 VPN 客户端，它会尝试联到 VPN 服务器<br>（这点跟加密代理类似）。一旦和 VPN 服务器建立连接，VPN 客户端就会在你的系统<br>中建立了一个虚拟局域网。而且，你的系统中也会多出一个虚拟网卡（在 Windows 下，<br>可以用 ipconfig /all 命令，看到这多出来的网卡）。这样一来，你的系统中就有不止<br>一块网卡。这就引出一个问题：那些访问网络的程序，它的数据流应该通过哪个网卡进出？<br>&nbsp;&nbsp; 为了解决此问题，VPN 客户端通常会修改你系统的路由表，让那些数据流，优先从虚拟的网卡<br>进出。由于虚拟的网卡是通往 VPN 服务器的，当数据流到达 VPN 服务器之后，VPN 服务器<br>再帮你把数据流转向到真正的目的地。<br>  &nbsp;&nbsp; 前面说了，VPN 为了保证安全，都采用强加密的方式传输数据。这样一来，<br>  GFW 就无法分析你的网络数据流，进行敏感词过滤。所以，使用墙外的VPN服务器<br>  ，无形中就能达到翻墙的效果。</p>
+<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>代理一般都是局部的代理,我了解过的代理有http代理和sockets代理，例如chrome<br>插件下的switchsharp等</p>
+<h3 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h3><p>简而言之，就是代替客户端去做某些事情。<br>举个例子：你撸码撸到很晚了特别饿了，想去吃饭，但是这个时候呢你又不想去买饭，因为太懒了，这个时候怎么<br>办呢，我找个好的哥们去买东西，让他帮你去买东西，店主知道买东西的是他，而不是你，他把东西买来之后就交<br>给你，这个时候你的兄弟就是正向代理。</p>
+<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><p>反向代理就是代理服务器的行为ie。<br>还是举个例子:你撸码撸到很晚了特别饿了，想去吃饭，但是这个时候你还是想去买饭，这个时候你又想起了你的好<br>兄弟了，这次他告诉你他就是卖东西的，你把钱给他，他把东西卖给了你，其实他是代理了一些店，店主呢知道是你<br>要买东西而不是他买东西。</p>
+<p>在写博客的时候，室友说了一句特别经典的话:</p>
+<blockquote>
+<p>正向代理就是内网访问外网的时候用到的，反向代理就是外网访问内网的时候用到的。想想这句话也不无道理。</p>
+</blockquote>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><blockquote>
+<p><a href="http://www.gxbay.com/1559.html" target="_blank" rel="external">http://www.gxbay.com/1559.html</a><br><a href="http://wenda.chinabaike.com/b/38322/2013/1208/713383.html" target="_blank" rel="external">http://wenda.chinabaike.com/b/38322/2013/1208/713383.html</a><br><a href="http://jingpin.org/proxy-ssh-vpn" target="_blank" rel="external">http://jingpin.org/proxy-ssh-vpn</a><br><a href="https://www.zhihu.com/question/25143289" target="_blank" rel="external">https://www.zhihu.com/question/25143289</a><br><a href="https://program-think.blogspot.com/2011/09/gfw-vpn-hotspot-shield.html" target="_blank" rel="external">https://program-think.blogspot.com/2011/09/gfw-vpn-hotspot-shield.html</a><br><a href="https://plus.googleapis.com/+GhostAssassin/posts/c1zb7q6xKMA" target="_blank" rel="external">https://plus.googleapis.com/+GhostAssassin/posts/c1zb7q6xKMA</a><br><a href="http://wrfly.kfd.me/SOCKS%E4%BB%A3%E7%90%86%E5%92%8CHTTP%E4%BB%A3%E7%90%86%E7%9A%84%E5%8C%BA%E5%88%AB/" target="_blank" rel="external">http://wrfly.kfd.me/SOCKS%E4%BB%A3%E7%90%86%E5%92%8CHTTP%E4%BB%A3%E7%90%86%E7%9A%84%E5%8C%BA%E5%88%AB/</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vpn/" rel="tag">#vpn</a>
+          
+            <a href="/tags/代理/" rel="tag">#代理</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/25/用vim-chrome-实现markdown文章的编写和实时预览/" rel="next" title="用vim + chrome 实现markdown文章的编写和实时预览">
+                <i class="fa fa-chevron-left"></i> 用vim + chrome 实现markdown文章的编写和实时预览
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/31/hexo-github博客的多机使用/" rel="prev" title="hexo+github博客的多机使用">
+                hexo+github博客的多机使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="dreamleilei" />
+          <p class="site-author-name" itemprop="name">dreamleilei</p>
+          <p class="site-description motion-element" itemprop="description">for my dream</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#VPN"><span class="nav-number">1.</span> <span class="nav-text">VPN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VPN的简单介绍"><span class="nav-number">1.1.</span> <span class="nav-text">VPN的简单介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPN的蕃蔷原理"><span class="nav-number">1.2.</span> <span class="nav-text">VPN的蕃蔷原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代理"><span class="nav-number">2.</span> <span class="nav-text">代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正向代理"><span class="nav-number">2.1.</span> <span class="nav-text">正向代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反向代理"><span class="nav-number">2.2.</span> <span class="nav-text">反向代理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">3.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dreamleilei</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,648 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,nio," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="磊磊的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="##    最近再看I/O的一些东西,写出来,感觉有点水,仅供自己复习的时候看
+&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;前面基本的I/O流都差不多有看过,根据字节流和字符流也是比较容易区分的,但是有时候需要写入固定格式的数据,这时候就有点头疼,比如说我要写书10条double类型的数据和10条int类型的数据到文件中,用基本的输入输出流有点麻烦,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java nio">
+<meta property="og:url" content="http://dreamleilei.github.io/2015/06/04/java-nio/index.html">
+<meta property="og:site_name" content="磊磊的博客">
+<meta property="og:description" content="##    最近再看I/O的一些东西,写出来,感觉有点水,仅供自己复习的时候看
+&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;前面基本的I/O流都差不多有看过,根据字节流和字符流也是比较容易区分的,但是有时候需要写入固定格式的数据,这时候就有点头疼,比如说我要写书10条double类型的数据和10条int类型的数据到文件中,用基本的输入输出流有点麻烦,">
+<meta property="og:updated_time" content="2018-09-01T00:59:42.206Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java nio">
+<meta name="twitter:description" content="##    最近再看I/O的一些东西,写出来,感觉有点水,仅供自己复习的时候看
+&amp;lt;span style=&amp;quot;font-size:20px;&amp;quot;&amp;gt;前面基本的I/O流都差不多有看过,根据字节流和字符流也是比较容易区分的,但是有时候需要写入固定格式的数据,这时候就有点头疼,比如说我要写书10条double类型的数据和10条int类型的数据到文件中,用基本的输入输出流有点麻烦,">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://dreamleilei.github.io/2015/06/04/java-nio/"/>
+
+  <title> Java nio | 磊磊的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">磊磊的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java nio
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-06-04T13:18:26+08:00" content="2015-06-04">
+              2015-06-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java复习/" itemprop="url" rel="index">
+                    <span itemprop="name">Java复习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##<br>    <span style="font-size:20px;">最近再看I/O的一些东西,写出来,感觉有点水,仅供自己复习的时候看</span></p>
+<pre><code>&lt;span style=&quot;font-size:20px;&quot;&gt;前面基本的I/O流都差不多有看过,根据字节流和字符流也是比较容易区分的,但是有时候需要写入固定格式的数据,这时候就有点头疼,比如说我要写书10条double类型的数据和10条int类型的数据到文件中,用基本的输入输出流有点麻烦,必须把double和int类型转换成String才能写入,这个时候就可以用到DataInputStream 和 OutputStream的字节流来写入,如果想要用字符流写入Int和double类型,用PrintWriter可以方便的写入,不过读出的时候却比较麻烦.&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;还有之前遗忘的一点就是Sytstem.setIn(InputStream) System.setOut(InputStream) System.setErr(inputStream)这三个是系统的输入输出流重定向用的.&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;字节流和字符流的区别除了基本单位不同外,我还学到了一点就是字符流是通过系统的缓冲区为中介的,如果你用字符流向文件写入的时候忘记了close(),你会那发现文件中并没有写入数据,这是因为字符流中读入的数据仍然存在系统的缓冲区中,这是你需要flush或者close掉字符流,你就会发现已经存在里面了.&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;对象的序列化也是I/O的比较重要的一个部分,不过没有仔细的研究过.&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;字节流转换为字符流的InputStreamReader 和OutputStreamWriter可以很好的帮助我们从键盘中输入汉字,然后以字符的形式写入到另一个流中(比如说写入到文本中,此时不会出现乱码)&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;最近还有在看一些NIO的东西&lt;/span&gt;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;nio中的BtyeBuffer可以人为的去创建一段缓冲区,通过调用ByteBuffer.allocate(size)来创建,除了ByteBuffer外,其他类型的Buffer也都有,不过ByteBuffer比较常见.&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;nio中多了的东西叫做Channel的,FileInputStream, FileOutputStream和RandomAcessFile,都可以调用getChannel()方法,产生一个通道,利用这个特性可以提高IO读写的速度&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size: 20px; line-height: 32px;&quot;&gt;read() 和write()方法中可以直接以自己定义的缓冲区作为目标,当缓冲区从读状态变成写入的时候,一定要先调用flip()这个方法把limit设置为position,然后把position设置为0,然后写入的时候刚好把要写入的内容写入,然后调用clear方法,这是把position设置为0,limit设置为capcity,又实现了从0开始读数据.&lt;/span&gt;
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/nio/" rel="tag">#nio</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/04/java-nio-e5-ae-9e-e7-8e-b0-e6-96-87-e4-bb-b6-e5-a4-8d-e5-88-b6/" rel="next" title="Java nio 实现文件复制">
+                <i class="fa fa-chevron-left"></i> Java nio 实现文件复制
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/05/java-e5-a4-8d-e4-b9-a0-e8-b5-84-e6-96-99-e5-b0-8f-e6-95-b4-e7-90-86/" rel="prev" title="Java复习资料小整理">
+                Java复习资料小整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="dreamleilei" />
+          <p class="site-author-name" itemprop="name">dreamleilei</p>
+          <p class="site-description motion-element" itemprop="description">for my dream</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dreamleilei</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,709 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,资料整理," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="磊磊的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 今天下午去听了一位学长的Java Web后台开发的讲座,受益匪浅,不过也深受打击了,学长告诉我他一周学完了SSH框架的struts和Hibernate,然后用两周的时间学完了Spring,整个学习Java EE的过程只用了一个多月,听了学长的一席话,整个人都不好了,曾经认为自己的学习能力是可以的,没想到学长的学习能力是如此的强大,看来还是要努">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java复习资料小整理">
+<meta property="og:url" content="http://dreamleilei.github.io/2015/06/05/java-e5-a4-8d-e4-b9-a0-e8-b5-84-e6-96-99-e5-b0-8f-e6-95-b4-e7-90-86/index.html">
+<meta property="og:site_name" content="磊磊的博客">
+<meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 今天下午去听了一位学长的Java Web后台开发的讲座,受益匪浅,不过也深受打击了,学长告诉我他一周学完了SSH框架的struts和Hibernate,然后用两周的时间学完了Spring,整个学习Java EE的过程只用了一个多月,听了学长的一席话,整个人都不好了,曾经认为自己的学习能力是可以的,没想到学长的学习能力是如此的强大,看来还是要努">
+<meta property="og:updated_time" content="2018-09-01T00:59:42.205Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java复习资料小整理">
+<meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 今天下午去听了一位学长的Java Web后台开发的讲座,受益匪浅,不过也深受打击了,学长告诉我他一周学完了SSH框架的struts和Hibernate,然后用两周的时间学完了Spring,整个学习Java EE的过程只用了一个多月,听了学长的一席话,整个人都不好了,曾经认为自己的学习能力是可以的,没想到学长的学习能力是如此的强大,看来还是要努">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://dreamleilei.github.io/2015/06/05/java-e5-a4-8d-e4-b9-a0-e8-b5-84-e6-96-99-e5-b0-8f-e6-95-b4-e7-90-86/"/>
+
+  <title> Java复习资料小整理 | 磊磊的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">磊磊的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java复习资料小整理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-06-05T14:10:13+08:00" content="2015-06-05">
+              2015-06-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java复习/" itemprop="url" rel="index">
+                    <span itemprop="name">Java复习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><span style="font-size:20px;">&nbsp; &nbsp; &nbsp; &nbsp; 今天下午去听了一位学长的Java Web后台开发的讲座,受益匪浅,不过也深受打击了,学长告诉我他一周学完了SSH框架的struts和Hibernate,然后用两周的时间学完了Spring,整个学习Java EE的过程只用了一个多月,听了学长的一席话,整个人都不好了,曾经认为自己的学习能力是可以的,没想到学长的学习能力是如此</span><span style="font-size:20px;">的强大,看来还是要努力进取啊,不过比较高兴的一点是见到了一位好长时间都不见的好友,虽然不知道如何跟她说话,不过感觉还是可以的,好了,闲话不多说,现在开始步入正题.</span></p>
+<pre><code>&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;span style=&quot;font-size:20px;&quot;&gt;最近一周的时间一直在复习java SE,不妨趁着有时间,整理一下自己找到的一些学习资料&lt;/span&gt;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;首先是一些Java SE的基础资料,[http://www.cnblogs.com/dolphin0520/category/361055.html](http://www.cnblogs.com/dolphin0520/category/361055.html)(海子的博客,适合新手看)&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;[http://blog.csdn.net/column/details/java-2014.html](http://blog.csdn.net/column/details/java-2014.html)(Thinking in Java的读书笔记,适合边读书边看)&lt;/span&gt;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;[http://www.open-open.com/lib/view/open1415453057980.html](http://www.open-open.com/lib/view/open1415453057980.html)(Java 数据类型的简介)&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;[http://www.open-open.com/lib/view/open1422791124330.html](http://www.open-open.com/lib/view/open1422791124330.html)(Java内部类介绍)&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;[http://blog.sina.com.cn/s/blog_8d2da7430100xjk5.html](http://blog.sina.com.cn/s/blog_8d2da7430100xjk5.html)(Java闭包的介绍)&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;[http://www.cnblogs.com/dragon/archive/2006/05/08/394078.html](http://www.cnblogs.com/dragon/archive/2006/05/08/394078.html)(正则表达式)&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;[http://www.cnblogs.com/elleniou/archive/2012/07/31/2617312.html](http://www.cnblogs.com/elleniou/archive/2012/07/31/2617312.html)(正则表达式大全)&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;[http://www.open-open.com/lib/view/open1421034895953.html](http://www.open-open.com/lib/view/open1421034895953.html)&amp;nbsp;(Java正则基础)&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;[http://www.open-open.com/lib/view/open1421034806796.html](http://www.open-open.com/lib/view/open1421034806796.html)&amp;nbsp;(Java正则)&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;[http://blog.csdn.net/column/details/concurrency.html](http://blog.csdn.net/column/details/concurrency.html)&amp;nbsp; (Java 并发编程)&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;[http://zhangshixi.iteye.com/blog](http://zhangshixi.iteye.com/blog/679959)&lt;/span&gt;http://blog.csdn.net/ns_code/article/category/1823903&lt;span style=&quot;font-size:20px;&quot;&gt;[/679959](http://zhangshixi.iteye.com/blog/679959)&amp;nbsp; (Java nio)&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;[http://blog.csdn.net/ns_code/article/category/1823903](http://blog.csdn.net/ns_code/article/category/1823903)&amp;nbsp;(深入理解Java虚拟机)&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;[http://zhangshixi.iteye.com/blog/674856](http://zhangshixi.iteye.com/blog/674856)&amp;nbsp; (java一些集合类和其他类的源码解析)&lt;/span&gt;
+
+&amp;nbsp;
+
+&lt;span style=&quot;font-size:20px;&quot;&gt;以上的链接差不多就是最近一周有在看的东西,希望自己能够向赵琛学长看齐,同时希望自己能过不浮躁,踏实一点,自己给自己鼓舞,加油!&amp;nbsp;&lt;/span&gt;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/资料整理/" rel="tag">#资料整理</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/04/java-nio/" rel="next" title="Java nio">
+                <i class="fa fa-chevron-left"></i> Java nio
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/15/mariadb-e4-bf-ae-e6-94-b9-e5-ad-97-e7-ac-a6-e7-bc-96-e7-a0-81/" rel="prev" title="Mariadb 修改字符编码">
+                Mariadb 修改字符编码 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="dreamleilei" />
+          <p class="site-author-name" itemprop="name">dreamleilei</p>
+          <p class="site-description motion-element" itemprop="description">for my dream</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dreamleilei</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
