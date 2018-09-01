@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="Java nio,Java," />
 
 
 
@@ -86,28 +86,28 @@
 
 
 
-<meta name="description" content="[code lang=”java”]import java.util.ArrayList;import java.util.Arrays;import java.util.Collection;
-/**
+<meta name="description" content="[code lang=”java”]/**
 
-Created by lei on 15-7-8.*/public class MyArrayList&amp;lt;E&amp;gt; { private Object[] element;
- @Overri">
+Created by lei on 15-6-4./import java.io.;import java.nio.*;import java.nio.channels.FileChannel;
+
+public class MyCopy1 {    public static void main(String[] args) throws IOExce">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简单的ArrayList的实现">
-<meta property="og:url" content="http://dreamleilei.github.io/2015/07/08/e7-ae-80-e5-8d-95-e7-9a-84arraylist-e7-9a-84-e5-ae-9e-e7-8e-b0/index.html">
+<meta property="og:title" content="Java nio 实现文件复制">
+<meta property="og:url" content="http://dreamleilei.github.io/2015/06/04/Java nio 实现文件复制/index.html">
 <meta property="og:site_name" content="磊磊的博客">
-<meta property="og:description" content="[code lang=”java”]import java.util.ArrayList;import java.util.Arrays;import java.util.Collection;
-/**
+<meta property="og:description" content="[code lang=”java”]/**
 
-Created by lei on 15-7-8.*/public class MyArrayList&amp;lt;E&amp;gt; { private Object[] element;
- @Overri">
-<meta property="og:updated_time" content="2018-09-01T00:59:42.203Z">
+Created by lei on 15-6-4./import java.io.;import java.nio.*;import java.nio.channels.FileChannel;
+
+public class MyCopy1 {    public static void main(String[] args) throws IOExce">
+<meta property="og:updated_time" content="2018-09-01T00:59:42.206Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简单的ArrayList的实现">
-<meta name="twitter:description" content="[code lang=”java”]import java.util.ArrayList;import java.util.Arrays;import java.util.Collection;
-/**
+<meta name="twitter:title" content="Java nio 实现文件复制">
+<meta name="twitter:description" content="[code lang=”java”]/**
 
-Created by lei on 15-7-8.*/public class MyArrayList&amp;lt;E&amp;gt; { private Object[] element;
- @Overri">
+Created by lei on 15-6-4./import java.io.;import java.nio.*;import java.nio.channels.FileChannel;
+
+public class MyCopy1 {    public static void main(String[] args) throws IOExce">
 
 
 
@@ -128,9 +128,9 @@ Created by lei on 15-7-8.*/public class MyArrayList&amp;lt;E&amp;gt; { private O
 
 
 
-  <link rel="canonical" href="http://dreamleilei.github.io/2015/07/08/e7-ae-80-e5-8d-95-e7-9a-84arraylist-e7-9a-84-e5-ae-9e-e7-8e-b0/"/>
+  <link rel="canonical" href="http://dreamleilei.github.io/2015/06/04/Java nio 实现文件复制/"/>
 
-  <title> 简单的ArrayList的实现 | 磊磊的博客 </title>
+  <title> Java nio 实现文件复制 | 磊磊的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -234,9 +234,32 @@ Created by lei on 15-7-8.*/public class MyArrayList&amp;lt;E&amp;gt; { private O
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
   
 </nav>
 
@@ -270,7 +293,7 @@ Created by lei on 15-7-8.*/public class MyArrayList&amp;lt;E&amp;gt; { private O
             
             
               
-                简单的ArrayList的实现
+                Java nio 实现文件复制
               
             
           </h1>
@@ -282,8 +305,8 @@ Created by lei on 15-7-8.*/public class MyArrayList&amp;lt;E&amp;gt; { private O
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-08T05:11:07+08:00" content="2015-07-08">
-              2015-07-08
+            <time itemprop="dateCreated" datetime="2015-06-04T12:35:06+08:00" content="2015-06-04">
+              2015-06-04
             </time>
           </span>
 
@@ -329,210 +352,14 @@ Created by lei on 15-7-8.*/public class MyArrayList&amp;lt;E&amp;gt; { private O
       
 
       
-        <p>[code lang=”java”]<br>import java.util.ArrayList;<br>import java.util.Arrays;<br>import java.util.Collection;</p>
-<p>/**</p>
+        <p>[code lang=”java”]<br>/**</p>
 <ul>
-<li><p>Created by lei on 15-7-8.<br>*/<br>public class MyArrayList&lt;E&gt; {<br> private Object[] element;</p>
-<p> @Override<br> public String toString() {</p>
-<pre><code>StringBuilder toString= new StringBuilder(&amp;quot;&amp;quot;);
-for (int i = 0; i &amp;lt; size; i++) {
-    toString.append(i + &amp;quot;: &amp;quot; + element[i] + &amp;quot; &amp;quot;);
-}
-return toString.toString();
-</code></pre><p> }</p>
-<p> private static final int defaultCapacity = 10;<br> private int size = 0;<br> private int capacity;</p>
-<p> public MyArrayList() {</p>
-<pre><code>element = new Object[defaultCapacity];
-this.capacity = defaultCapacity;
-</code></pre><p> }</p>
-<p> public MyArrayList(int capacity) {</p>
-<pre><code>if (capacity &amp;lt; 0) {
-    throw new IllegalArgumentException(&amp;quot;hello&amp;quot;);
-}
-element = new Object[capacity];
-this.capacity = capacity;
-</code></pre><p> }</p>
-<p> public MyArrayList(Collection&lt;? extends E&gt; c) {</p>
-<pre><code>element = c.toArray();
-size = element.length;
-System.out.println(element.getClass());
-System.out.println(Object[].class);
-if (element.getClass() != Object[].class) {
-    Arrays.copyOf(element, element.length, Object[].class);
-}
-</code></pre><p> }</p>
-<p> public void add(E e) {</p>
-<pre><code>ensureCapacity(size);
-element[size++] = e;
-</code></pre><p> }</p>
-<p> public void add(int index, E e) {</p>
-<pre><code>rangeCheck(index);
-ensureCapacity(size + 1);
-int num = size - index;
-System.arraycopy(element, index, element, index + 1, num);
-element[index] = e;
-size++;
-</code></pre><p> }</p>
-<p> public boolean addAll(int index, Collection&lt;? extends E&gt; e) {</p>
-<pre><code>rangeCheck(index);
-Object[] temp = e.toArray();
-
-int num = size - index + temp.length;
-ensureCapacity(size + temp.length);
-System.arraycopy(element, index , element, index + temp.length , size - index );
-
-System.arraycopy(temp, 0, element, index, temp.length);
-this.size += temp.length;
-return temp.length != 0;
-</code></pre><p> }</p>
-<p> public boolean addAll(Collection&lt;? extends E&gt; e) {</p>
-<pre><code>Object[]  temp = e.toArray();
-
-ensureCapacity(size + temp.length);
-System.arraycopy(temp, 0, element, size, temp.length);
-this.size += temp.length;
-return temp.length != 0;
-</code></pre><p> }</p>
-<p> @SuppressWarnings(&quot;unchecked&quot;)<br> public E element(int index) {</p>
-<pre><code>rangeCheck(index);
-Object oldData = element[index];
-return (E) oldData;
-</code></pre><p> }</p>
-<p> public E remove(int index) {</p>
-<pre><code>rangeCheck(index);
-
-E oldData = element(index);
-System.arraycopy(element, index + 1, element, index, size - index - 1);
-element[--size] = null;
-return oldData;
-</code></pre><p> }</p>
-<p> public E remove() {</p>
-<pre><code>E removeData;
-removeData = remove(size - 1);
-return removeData;
-</code></pre><p> }</p>
-<p> @SuppressWarnings(&quot;unchecked&quot;)<br> public E get(int index) {</p>
-<pre><code>rangeCheck(index);
-return element(index);
-</code></pre><p> }</p>
-<p> public boolean remove(Object o) {</p>
-<pre><code>if (o == null) {
-    for (int i = 0; i &amp;lt; size; i++) {
-        if (element[i] == null) {
-            fastRemove(i);
-            return true;
-        }
-    }
-} else {
-    for (int i = 0; i &amp;lt; size; i++) {
-        if(element[i].equals(o)){
-            fastRemove(i);
-            return true;
-        }
-    }
-}
-return false;
-</code></pre><p> }</p>
-<p> public int size(){</p>
-<pre><code>return this.size;
-</code></pre><p> }</p>
-<p> public int indexOf(Object o){</p>
-<pre><code>if(o == null){
-    for (int index = 0; index &amp;lt; size; index++) {
-        if(element[index]==null)
-            return index;
-    }
-} else {
-    for (int index = 0; index &amp;lt; size; index++) {
-        if (element[index].equals(o)) {
-            return index;
-        }
-    }
-}
-return -1;
-</code></pre><p> }</p>
-<p> public boolean contains(Object o){</p>
-<pre><code>return indexOf(o) &amp;gt; -1;
-</code></pre><p> }</p>
-<p> public boolean isEmpty(){</p>
-<pre><code>return size == 0;
-</code></pre><p> }</p>
-<p> public E set(int index, E e){</p>
-<pre><code>rangeCheck(index);
-
-E oldData = element(index);
-element[index] = e;
-return oldData;
-</code></pre><p> }</p>
-<p> public void clear(){</p>
-<pre><code>for (int i = 0; i &amp;lt; size; i++) {
-    element[i] = null;
-}
-this.size = 0;
-</code></pre><p> }</p>
-<p> protected void removeRange(int fromIndex, int toIndex) {</p>
-<pre><code>rangeCheck(fromIndex);
-rangeCheck(toIndex);
-
-int numMove = size - toIndex ;
-if(numMove &amp;gt; 0) {
-    System.arraycopy(element, toIndex, element, fromIndex, numMove);
-}
-
-int newSize = size - (toIndex - fromIndex);
-
-for (int i = newSize; i &amp;lt; size; i++) {
-    element[i] = null;
-}
-
-this.size = newSize;
-</code></pre><p> }</p>
-<p> private void fastRemove(int index) {</p>
-<pre><code>System.arraycopy(element, index + 1, element, index, size - index - 1);
-element[--size] = null;
-</code></pre><p> }</p>
-<p> private void rangeCheck(int range) {</p>
-<pre><code>if (range &amp;lt; 0 || range &amp;gt; size - 1) {
-    throw new ArrayIndexOutOfBoundsException(range);
-}
-</code></pre><p> }</p>
-<p> public Object[] toArray(){</p>
-<pre><code>return Arrays.copyOf(element, size);
-</code></pre><p> }</p>
-<p> private void ensureCapacity(int capacity) {</p>
-<pre><code>if (capacity &amp;gt;= this.capacity) {
-    this.capacity = (this.capacity * 3) / 2  +1;
-    if (this.capacity &amp;lt;= capacity) {
-        this.capacity = capacity;
-    }
-    element = Arrays.copyOf(element, this.capacity);
-}
-</code></pre><p> }</p>
-<p> public static void main(String[] args) {</p>
-<pre><code>MyArrayList&amp;lt;String&amp;gt; myList = new MyArrayList&amp;lt;String&amp;gt;();
-
-for (int i = 0; i &amp;lt; 10; i++) {
-    myList.add(&amp;quot;hello world&amp;quot;);
-}
-
-ArrayList&amp;lt;String&amp;gt; addList = new ArrayList&amp;lt;String&amp;gt;(10);
-addList.add(&amp;quot;hello&amp;quot;);
-addList.add(&amp;quot;leilei&amp;quot;);
-addList.add(&amp;quot;leilei2&amp;quot;);
-myList.addAll(addList);
-System.out.println(addList);
-System.out.println(myList);
-System.out.println(myList.indexOf(&amp;quot;leilei&amp;quot;));
-System.out.println(myList.contains(&amp;quot;sf&amp;quot;));
-System.out.println(myList.remove(&amp;quot;leilei&amp;quot;));
-System.out.println(myList);
-System.out.println(myList.indexOf(&amp;quot;leilei&amp;quot;));
-myList.addAll(8, addList);
-System.out.println(myList);
-</code></pre><p> }</p>
-</li>
+<li>Created by lei on 15-6-4.<br><em>/<br>import java.io.</em>;<br>import java.nio.*;<br>import java.nio.channels.FileChannel;</li>
 </ul>
-<p>}<br>[/code]</p>
+<p>public class MyCopy1 {<br>    public static void main(String[] args) throws IOException {<br>        File file1 = new File(args[0]);<br>        File file2 = new File(args[1]);<br>        FileOutputStream fileOutputStream = new FileOutputStream(file2);<br>        FileInputStream fileInputStream = new FileInputStream(file1);<br>        FileChannel fileChannel = fileInputStream.getChannel();<br>        FileChannel fileChannel1 = fileOutputStream.getChannel();<br>     //   fileChannel.transferTo( 0, fileChannel.size(),fileChannel1);<br>        fileChannel1.transferFrom(fileChannel, 0, fileChannel.size());<br>        fileChannel.close();<br>        fileChannel1.close();</p>
+<pre><code>}
+</code></pre><p>}</p>
+<p>[/code]</p>
 
       
     </div>
@@ -554,6 +381,8 @@ System.out.println(myList);
       
         <div class="post-tags">
           
+            <a href="/tags/Java-nio/" rel="tag">#Java nio</a>
+          
             <a href="/tags/Java/" rel="tag">#Java</a>
           
         </div>
@@ -563,16 +392,16 @@ System.out.println(myList);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/27/e6-95-b0-e7-94-b5-e5-a4-8d-e4-b9-a0/" rel="next" title="数电复习">
-                <i class="fa fa-chevron-left"></i> 数电复习
+              <a href="/2015/05/31/java复习(二) 闭包和类的加载与初始化/" rel="next" title="java复习(二) 闭包和类的加载与初始化">
+                <i class="fa fa-chevron-left"></i> java复习(二) 闭包和类的加载与初始化
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/15/linux-e4-b8-8bjava-e7-9a-84jni-e6-8a-80-e6-9c-af-e5-85-a5-e9-97-a8/" rel="prev" title="Linux下java的JNI技术(入门)">
-                Linux下java的JNI技术(入门) <i class="fa fa-chevron-right"></i>
+              <a href="/2015/06/04/java-nio/" rel="prev" title="Java nio">
+                Java nio <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -633,7 +462,7 @@ System.out.println(myList);
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="https://avatars1.githubusercontent.com/u/10141940?s=460&v=4"
                alt="dreamleilei" />
           <p class="site-author-name" itemprop="name">dreamleilei</p>
           <p class="site-description motion-element" itemprop="description">for my dream</p>
@@ -641,7 +470,7 @@ System.out.println(myList);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -649,7 +478,7 @@ System.out.println(myList);
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -658,7 +487,7 @@ System.out.println(myList);
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -817,6 +646,135 @@ System.out.println(myList);
 
   
   
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
   
 
   
