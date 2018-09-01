@@ -1,5 +1,5 @@
 ---
-title: Intllij idea 下配置tomact运行jsp
+title: Intellij idea 下配置tomact运行jsp
 id: 64
 categories:
   - IDE

@@ -49,6 +49,12 @@ hexo deploy
 ## 安装插件
 配置完自己的静态博客之后，需要配置插件，例如配置多说评论插件，站内搜索的等等，就不再啰嗦了
 
+##使用标签
+```jshelllanguage
+hexo new page tags
+```
+然后会生成一个`./source/tags/index.md`文件,在文件中指定 `type: "tags"`，重新部署即可
+
 ### 参考链接:
 >[http://www.tuicool.com/articles/AfQnQjy/](http://www.tuicool.com/articles/AfQnQjy/)
 > [http://www.jianshu.com/p/465830080ea9](http://www.jianshu.com/p/465830080ea9)
