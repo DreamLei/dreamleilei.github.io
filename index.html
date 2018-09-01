@@ -283,6 +283,99 @@
             
               
                 
+                <a class="post-title-link" href="/2018/09/01/redis设计与实践阅读心得/" itemprop="url">
+                  redis设计与实践阅读心得
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-09-01T11:51:50+08:00" content="2018-09-01">
+              2018-09-01
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/11/实习心得/" itemprop="url">
                   实习心得
                 </a>
@@ -1405,124 +1498,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/27/初学spring-mvc/" itemprop="url">
-                  初学Spring MVC
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-27T13:06:34+08:00" content="2016-04-27">
-              2016-04-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Spring-MVC/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring MVC</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>学习Spring MVC,于是想着用Spring MVC框架构建REST风格的项目,由于初次接触这个框架,所以犯了好多低级的错误,在此列出踩过的坑,防止以后再次入坑.</p>
-<p>(1)在配置Spring MVC的xml文件中xsi:schemaLocation是键值对的关系,由于想要简化配置用到了context标签</p>
-<p>&lt;context:component-scan base-package=&quot;&quot; &gt; 如果在xsi:scehmaLocation中没有配置context的url,会报错:通配符的匹配很全面, 但无法找到元素 &#39;context:component-scan&#39; 的声明 ,同理,其它的标签也是一样.</p>
-<p>(2)在Controller中@RequestMapping(value=&quot;&quot;)愚蠢的写成了@RequestMapping(name=&quot;&quot;)于是报错了..</p>
-<p>(3)在构建REST风格的应用的时候,因为自己用的是spring4.x,所以org.springframework.http.converter.json.MappingJacksonHttpMessageConverter是没有的,取而代之的是org.springframework.http.converter.json.MappingJackson2HttpMessageConverter</p>
-<p>(4)在配置REST风格的应用的时候,jackson-databind是不可缺少的</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1568,7 +1543,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

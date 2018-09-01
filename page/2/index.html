@@ -283,6 +283,124 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/27/初学spring-mvc/" itemprop="url">
+                  初学Spring MVC
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-27T13:06:34+08:00" content="2016-04-27">
+              2016-04-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Spring-MVC/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring MVC</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>学习Spring MVC,于是想着用Spring MVC框架构建REST风格的项目,由于初次接触这个框架,所以犯了好多低级的错误,在此列出踩过的坑,防止以后再次入坑.</p>
+<p>(1)在配置Spring MVC的xml文件中xsi:schemaLocation是键值对的关系,由于想要简化配置用到了context标签</p>
+<p>&lt;context:component-scan base-package=&quot;&quot; &gt; 如果在xsi:scehmaLocation中没有配置context的url,会报错:通配符的匹配很全面, 但无法找到元素 &#39;context:component-scan&#39; 的声明 ,同理,其它的标签也是一样.</p>
+<p>(2)在Controller中@RequestMapping(value=&quot;&quot;)愚蠢的写成了@RequestMapping(name=&quot;&quot;)于是报错了..</p>
+<p>(3)在构建REST风格的应用的时候,因为自己用的是spring4.x,所以org.springframework.http.converter.json.MappingJacksonHttpMessageConverter是没有的,取而代之的是org.springframework.http.converter.json.MappingJackson2HttpMessageConverter</p>
+<p>(4)在配置REST风格的应用的时候,jackson-databind是不可缺少的</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/25/Redis 使用/" itemprop="url">
                   Redis 使用
                 </a>
@@ -1663,230 +1781,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/24/Servlet复习/" itemprop="url">
-                  Servlet复习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-24T01:42:27+08:00" content="2015-07-24">
-              2015-07-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java复习/" itemprop="url" rel="index">
-                    <span itemprop="name">Java复习</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><span style="font-size:20px;">&nbsp;</span></p>
-<pre><code>之前学过jsp,servlet和struts2基础,因为学完后不久就在准备最后的Java比赛和期末考试,好久没有写关于这些方面的代码了,于是趁着最近的时间复习一下有关这方面的内容.&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;我学的都是最基础的,最简单的东西.&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;首先谈一下webapp的工作路径吧,首先要有一个根目录,然后根目录下面有一个WEB-INF文件夹和src文件夹,在这个文件夹里面有一个web.xml文件(Servlet3.0以后这个文件可以没有),然后相应的jsp页面应该放在根目录下面,如果放在WEB-INF文件夹下面,是没有办法直接在浏览器里输入URL访问的,但是可以通过相应的映射访问,(有些页面出于安全考虑,可以放在WEB-INF下面,这样一定程度上可以提高安全性),一般WEB-INF文件夹下面有class文件夹和lib文件夹,其中lib文件夹是存放应用中需要用到的第三方jar包,class文件夹存放.class文件.
-
-根目录下的src文件夹是存放各种用到的源文件,比如自己写的Servlet文件或者Filter文件或者JavaBean.&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;接下来谈一下web.xml的配置,有一篇博客写的很棒,在此把它给粘上http://www.cnblogs.com/chinafine/archive/2010/09/02/1815980.html之前一直一位web.xml中的元素是没有顺序的,后来发现自己错的相当严重,导致花了好几个小时找错误,找不到哪里错了.
-
-最基础的是&amp;lt;servlet&amp;gt;元素一定在&amp;lt;servlet-mapping&amp;gt;元素之后,而&amp;lt;context&amp;gt;元素在&amp;lt;servlet&amp;gt;元素之前,&amp;lt;context-param&amp;gt;在&amp;lt;servlet&amp;gt;元素之前,在此列出一下最常用的一些元素的顺序:&amp;lt;display-name&amp;gt; , &amp;lt;description&amp;gt;, &amp;lt;filter&amp;gt;,&amp;lt;filter-mapping&amp;gt;, &amp;lt;listener&amp;gt;,&amp;lt;servlet&amp;gt; ,&amp;lt;servlet-mapping&amp;gt;,除了通过配置web.xml可以实现配置外,还可以通过注解的形式配置.&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;&amp;lt;servlet&amp;gt;配置:需要的子元素&amp;lt;servlet-name&amp;gt; &amp;lt;servlet-classs&amp;gt;(这两个元素是必须的)
-
-&amp;nbsp;&amp;lt;servlet-mapping&amp;gt;配置:需要子元素&amp;lt;servlet-name&amp;gt;(此元素的值必须与&amp;lt;servlet&amp;gt;中的某个值匹配) &amp;lt;url-pattern&amp;gt;(次元素可以有多个值) (这两个元素是必须的)
-
-也可以通过注解的形式来进行配置Servlet(要求Servlet版本至少3.0)格式如下:
-
-@WebServlet(name=&amp;quot;name&amp;quot;, urlPatterns={&amp;quot;pattern1&amp;quot;, &amp;quot;pattern2&amp;#39;}, initParams={@WebInitParam(name=&amp;quot;name&amp;quot;, value=&amp;quot;value&amp;quot;), @WebInitParam(name=&amp;quot;name1&amp;quot;, value=&amp;quot;value1&amp;quot;)})&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;&amp;lt;filter&amp;gt;配置:和servlet的配置基本一致,在此就不再重复.&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;&amp;lt;listener&amp;gt;配置:只需要&amp;lt; listener-class&amp;gt;子元素&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;&amp;lt;context-param&amp;gt;配置:需要的子元素&amp;lt;param-name&amp;gt;和&amp;lt;param-value&amp;gt;(至少这两个元素,且只准出现一次)&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;说完了简单web.xml的配置,说一下简单的Servlet,创建一个Servlet必须要继承HttpServlet这个类,这个类中有好多方法,比如说do+请求方式方法,如doGet, doPost等等,这些方法的参数是HttpServletRequest类型和HttpServletResponse类型,如果是直接请求一个Servlet的话,是service()方法来对它进行响应的.&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;HttpServletRequest接口实现了ServletRequest接口,ServletRequest接口的方法有getContextType(), getContextLength(),getInputStream(), getLocalAddr(), getLocalName(), getLocalPort(),getParameter(String name),
-
-getAttribue(String name), setAttribute(String name, Object obj),removeAttribute(String name),getParameterNames(),getParameterMap()等等,HttpServletRequest接口中的方法:getCookies(), getHeader(String name), getHeaderNames(),getMethod(),getRequestURI(), getQueryString(),等.&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;HttpServletResponse接口实现了ServletResponse接口,ServletResponse接口的常用方法有:setContextType,setContextLength(),getOutputStream(),getWriter(),reset(),getCharacterEncoding(),flushBuffer(),
-
-HttpServletResponse接口中添加的方法有addHeader(String name, String value), setHeader(String name, String value), addCookie(Cookie cookie), setStatus(int sc), sendError(int sc);&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;ServletConfig接口中的方法getInitParameter(String name), getInitParameterNames(),getServleContext(),getServletName(),这个接口实例化后产生的是一个servlet的实例,而getInitParameter(String name)方法获取的参数来自于&amp;lt;servlet&amp;gt;里定义的或者在@WebServlet(initparameters)里面注解的参数.getServeletContext()方法返回一个ServletContext的实例,&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;ServletContext接口 ,每个Web应用有唯一的ServletContext对象,该接口中定义的方法有:setAttitute(String name, Object obj), getAttribuer(String name),getInitParameter(String name_, getInitParameterNames(), getAttributeNames(),getRequestDispatcher(String path), getRealPath(String path), log(String msg)&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;HttpSession接口 :getId(), invalidata(),setAttribute(String name, Object, obj), getAttribute(String name), getAttributeNames(), removeAttribueName(String name), isNew(),SetMaxInactiveInterval(int interval),getServletContext().&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;Cookie接口:&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;列举完了几个常用的Servlet接口,接下来谈一下Web应用,
-
-Web应用的生命周期:
-
-(1)启动阶段
-
-(2)运行阶段
-
-(3)终止阶段&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;Web应用的启动阶段:
-
-(1)将web.xml读入内存中
-
-(2)创建一个ServletContext实例
-
-(3)初始化Filter
-
-(4)初始化必要的Servlet(load-on-startup)&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;Web应用的运行阶段:Servlet都处于待命的状态&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;Web应用的终止阶段:
-
-(1)销毁Servlet实例
-
-(2)销毁Filter
-
-(3)销毁与JavaWeb应用有关的对象,如ServletContext&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;谈一下Servlet的生命周期:
-
-(1)初始化阶段
-
-(2)运行阶段
-
-(3)销毁阶段&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;初始化阶段:
-
-(1)加载.class文件到内存中
-
-(2)Servlet创建ServletConfig对象.
-
-(3)创建Servlet对象
-
-(4)调用Servlet的Init()方法&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;运行阶段:&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;销毁阶段;
-
-调用destory()方法.销毁Servlet对象,然后销毁ServletConfig对象.&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;包含与转发:
-
-ServletContext对象的getRequestDispatcher().forward() 或者.include();
-
-或者调用request对象的相应方法,两者的区别是前者只能使用绝对路径,后者可以使用相对路径.&lt;/span&gt;
-
-&lt;span style=&quot;font-size:20px;&quot;&gt;重定向:
-
-response.sendRedirect(String location)重定向会丢失所有的请求参数.&lt;/span&gt;
-
-&amp;nbsp;
-
-&amp;nbsp;
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1932,7 +1826,7 @@ response.sendRedirect(String location)重定向会丢失所有的请求参数.&l
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

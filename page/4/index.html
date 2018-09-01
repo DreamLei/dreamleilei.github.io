@@ -283,6 +283,124 @@
             
               
                 
+                <a class="post-title-link" href="/2015/05/31/java复习(二) 闭包和类的加载与初始化/" itemprop="url">
+                  java复习(二) 闭包和类的加载与初始化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-05-31T07:23:32+08:00" content="2015-05-31">
+              2015-05-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java复习/" itemprop="url" rel="index">
+                    <span itemprop="name">Java复习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><span style="font-size: 20px;">参考链接:<a href="http://blog.sina.com.cn/s/blog_8d2da7430100xjk5.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_8d2da7430100xjk5.html</a> (闭包)</span></p>
+<p><span style="font-size: 20px;">参考链接:<a href="http://www.importnew.com/6579.html" target="_blank" rel="external">http://www.importnew.com/6579.html</a>(类的加载和初始化)</span></p>
+<p><span style="font-size: 20px;">一个类加载的时候只是会初始化它的static成员变量和static域(从上往下依次加载),而类的初始化则必须在加载的基础上依次初始化非static变量和非static域(从上往下依次加载),然后调用类的构造器,进行初始化.若一个类中包含父类,则必须先初始化父类(当一个类要加载时也是同样的),这样递归到没有父类的类,然后父类到子类依次执行初始化顺序,首先从父类到子类依次加载类,然后从父类到子类依次初始化静态域和静态常量,从父类到子类依次 初始化非静态域和非静态常量,和构造器(先初始非静态的变量,然后初始化构造器)</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="font-size: 20px;">闭包的概念:链接中已经挺详细的,这也是内部类的一个用途</span></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/05/30/Java复习(一) 内部类/" itemprop="url">
                   Java复习(一) 内部类
                 </a>
@@ -1384,7 +1502,7 @@ git push ( CTRL + Shift + K )
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
